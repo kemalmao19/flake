@@ -1,34 +1,81 @@
-
 { config, pkgs, ... }:
-{
-	programs.fish.enable = true;
-	programs.fish.plugins = [
-	 { 
-		name = "z";
-		src = pkgs.fetchFromGitHub {
-		 owner = "jethrokuan";
-		 repo = "z";
-		 rev = "ddeb28a7b6a1f0ec6dae40c636e5ca4908ad160a";
-		 sha256 = "0c5i7sdrsp0q3vbziqzdyqn4fmp235ax4mn4zslrswvn8g3fvdyh";};
-		}
 
-  # oh-my-fish plugins are stored in their own repositories, which
-  # makes them simple to import into home-manager.
-	{ 
-		name = "fasd";
-		src = pkgs.fetchFromGitHub {
-		 owner = "oh-my-fish";
-		 repo = "plugin-fasd";
-		 rev = "38a5b6b6011106092009549e52249c6d6f501fba";
-		 sha256 = "06v37hqy5yrv5a6ssd1p3cjd9y3hnp19d3ab7dag56fs1qmgyhbs";};
-		}
-		];
-	programs.fish.shellAliases = {
-		g = "git";
-		"..." = "cd ../..";
-		"bld" = "nix build .#homeConfigurations.kemal.activationPackage";
-		"sw" = "./result/activate";
-		"cfg"="vim flake.nix";	
-		"clc"="nix-collect-garbage -d"; };
+{
+  programs.fish = {
+    enable = true;
+    shellAbbrs = {
+      cp = "cp -iv";
+      mv = "mv -iv";
+      rm = "trash-put";
+      cat = "bat";
+      less = "less -i";
+      gst = "git status";
+      gco = "git checkout";
+      gcm = "git commit -m";
+      gai = "git add -i";
+      gpull = "git pull";
+      gpush = "git push";
+    };
+  };
+
+  programs.tmux = {
+    enable = true;
+    # mouse = true;
+    shortcut = "a";
+    aggressiveResize = true;
+    baseIndex = 1;
+    newSession = true;
+    escapeTime = 0;
+    clock24 = false;
+    terminal = "screen-256color";
+    sensibleOnTop = true;
+    plugins = with pkgs.tmuxPlugins; [
+      # sensible
+      pain-control
+      yank
+      prefix-highlight
+      better-mouse-mode
+    ];
+  };
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    withPython3 = true;
+    plugins = with pkgs.vimPlugins; [
+      # neovim-sensible
+      # nvim-surround
+      # nvim-treesitter
+      nvim-cmp
+      
+
+      vim-airline
+      {
+          plugin = vim-airline-themes;
+          config = ''
+            let g:airline_themes='wombat'
+          '';
+      }
+      
+      # vim-airline-clock
+      # vim-commentary
+      # vim-fugitive
+      # vim-gitgutter
+      # vim-indent-guides
+
+      {
+        plugin = dracula-vim;
+        config = ''
+          syntax enable
+          colorscheme dracula
+        '';
+      }
+    ];
+    extraConfig = ''
+      set cursorline
+      set scrolloff=5
+    '';
+  };
 }
 
