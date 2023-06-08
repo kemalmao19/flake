@@ -15,6 +15,7 @@
       gai = "git add -i";
       gpull = "git pull";
       gpush = "git push";
+      py = "python";
     };
   };
 
@@ -44,11 +45,59 @@
     vimAlias = true;
     withPython3 = true;
     plugins = with pkgs.vimPlugins; [
-      # neovim-sensible
-      # nvim-surround
-      # nvim-treesitter
+      neovim-sensible
+      nvim-surround
+      nvim-treesitter
       nvim-cmp
-      
+      vim-easymotion
+      jedi-vim
+      # vim-sendtowindow
+      # comfortable-motion.vim
+      #{
+       # plugin = ncm2-look.vim;
+        #config = '' let g:ncm2_look_enabled = 0 '';
+    
+
+      {
+        plugin = vim-isort;
+      config = ''let g:vim_isort_map = '<C-i>' '';}
+
+
+      {
+
+        plugin = ale;
+        config = ''
+          let g:ale_sign_column_always=1
+          let g:ale_lint_on_enter=1
+          let g:ale_lint_on_text_changed='always'
+          let g:ale_echo_msg_error_str='E'
+          let g:ale_echo_msg_warning_str='W'
+          let g:ale_echo_msg_format='[%linter%] %s [%severity%]: [%...code...%]'
+          let g:ale_linters={'python': ['flake8'], 'r': ['lintr']}
+          let g:ale_fixers={'python': ['black']}
+
+          '';
+
+      }
+
+      {
+        plugin = nerdtree;
+        config = ''
+          map <C-n> :NERDTreeToggle<CR>
+          let NERDTreeIgnore = ['\.pyc$']
+
+        '';
+
+      }
+
+      vim-nix
+
+      nvim-yarp
+      ncm2-bufword
+      ncm2-path
+
+      vim-startify
+      SimpylFold
 
       vim-airline
       {
@@ -58,7 +107,7 @@
           '';
       }
       
-      # vim-airline-clock
+      vim-airline-clock
       # vim-commentary
       # vim-fugitive
       # vim-gitgutter
