@@ -1,34 +1,149 @@
+{ config, pkgs, lib, ... }:
 
-{ config, pkgs, ... }:
 {
-	programs.fish.enable = true;
-	programs.fish.plugins = [
-	 { 
-		name = "z";
-		src = pkgs.fetchFromGitHub {
-		 owner = "jethrokuan";
-		 repo = "z";
-		 rev = "ddeb28a7b6a1f0ec6dae40c636e5ca4908ad160a";
-		 sha256 = "0c5i7sdrsp0q3vbziqzdyqn4fmp235ax4mn4zslrswvn8g3fvdyh";};
-		}
+  programs.fish = {
+    enable = true;
+    shellAbbrs = {
+      cp = "cp -iv";
+      mv = "mv -iv";
+      rm = "trash-put";
+      cat = "bat";
+      less = "less -i";
+      gst = "git status";
+      gco = "git checkout";
+      gcm = "git commit -m";
+      gai = "git add -i";
+      gpull = "git pull";
+      gpush = "git push";
+      py = "python";
+    };
+  };
 
-  # oh-my-fish plugins are stored in their own repositories, which
-  # makes them simple to import into home-manager.
-	{ 
-		name = "fasd";
-		src = pkgs.fetchFromGitHub {
-		 owner = "oh-my-fish";
-		 repo = "plugin-fasd";
-		 rev = "38a5b6b6011106092009549e52249c6d6f501fba";
-		 sha256 = "06v37hqy5yrv5a6ssd1p3cjd9y3hnp19d3ab7dag56fs1qmgyhbs";};
-		}
-		];
-	programs.fish.shellAliases = {
-		g = "git";
-		"..." = "cd ../..";
-		"bld" = "nix build .#homeConfigurations.kemal.activationPackage";
-		"sw" = "./result/activate";
-		"cfg"="vim flake.nix";	
-		"clc"="nix-collect-garbage -d"; };
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "tokyonight";
+      editor = {
+        line-number = "relative";
+        lsp.display-messages = true;
+      };
+      keys.normal = {
+        space.space = "file_picker";
+        space.w = ":w";
+        space.q = ":q";
+        esc = [ "collapse_selection" "keep_primary_selection" ];
+      };
+    };
+  };
+
+  programs.tmux = {
+    enable = true;
+    mouse = true;
+
+  };
+
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+    # enableTransience = false;
+    settings = {
+      add_newline = true;
+      character = {
+        success_symbol = "[❯](bold green)";
+        error_symbol = "[❯](bold red)";
+      };
+    };
+  };
+  # programs.neovim = {
+  #   enable = true;
+  #   viAlias = true;
+  #   vimAlias = true;
+  #   withPython3 = true;
+  #   plugins = with pkgs.vimPlugins; [
+  #     neovim-sensible
+  #     nvim-surround
+  #     nvim-treesitter
+  #     # nvim-cmp
+  #     vim-easymotion
+  #     {
+  #       plugin = jedi-vim;
+  #       config = '' 
+  #         let g:jedi#environment_path = "/home/kemal/miniconda3/bin/python3.9"
+  #         let g:pymode_rope = 0
+  #       '';}
+  #     # vim-sendtowindow
+  #     # comfortable-motion.vim
+  #     #{
+  #      # plugin = ncm2-look.vim;
+  #       #config = '' let g:ncm2_look_enabled = 0 '';
+  #   
+
+  #     {
+  #       plugin = vim-isort;
+  #     config = ''let g:vim_isort_map = '<C-i>' '';}
+
+  #     {
+
+  #       plugin = ale;
+  #       config = ''
+  #         let g:ale_sign_column_always=1
+  #         let g:ale_lint_on_enter=1
+  #         let g:ale_lint_on_text_changed='always'
+  #         let g:ale_echo_msg_error_str='E'
+  #         let g:ale_echo_msg_warning_str='W'
+  #         let g:ale_echo_msg_format='[%linter%] %s [%severity%]: [%...code...%]'
+  #         let g:ale_linters={'python': ['flake8'], 'r': ['lintr']}
+  #         let g:ale_fixers={'python': ['black']}
+
+  #         '';
+
+  #     }
+
+  #     {
+  #       plugin = nerdtree;
+  #       config = ''
+  #         map <C-n> :NERDTreeToggle<CR>
+  #         let NERDTreeIgnore = ['\.pyc$']
+
+  #       '';
+
+  #     }
+
+  #     vim-nix
+
+  #     # nvim-yarp
+  #     # ncm2-bufword
+  #     # ncm2-path
+
+  #     vim-startify
+  #     SimpylFold
+
+  #     vim-airline
+  #     {
+  #         plugin = vim-airline-themes;
+  #         config = ''
+  #           let g:airline_themes='wombat'
+  #         '';
+  #     }
+  #     
+  #     vim-airline-clock
+  #     # vim-commentary
+  #     # vim-fugitive
+  #     # vim-gitgutter
+  #     # vim-indent-guides
+
+  #     {
+  #       plugin = dracula-vim;
+  #       config = ''
+  #         syntax enable
+  #         colorscheme dracula
+  #       '';
+  #     }
+  #   ];
+  #   extraConfig = ''
+  #     set cursorline
+  #     set scrolloff=5
+  #   '';
+  # };
 }
 

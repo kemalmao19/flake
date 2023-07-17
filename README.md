@@ -1,5 +1,5 @@
 # flake
-This is simple nix flake
+This is simple nix flake (update 06/2023)
 
 # Information
 Nix flake provides subcommands for creating, modifying and querying Nix flakes. Flakes are the unit for packaging Nix code in a reproducible and discoverable way. They can have dependencies on other flakes, making it possible to have multi-repository Nix projects.
