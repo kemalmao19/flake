@@ -7,7 +7,8 @@ Nix flake provides subcommands for creating, modifying and querying Nix flakes. 
 A flake is a filesystem tree (typically fetched from a Git repository or a tarball) that contains a file named flake.nix in the root directory. flake.nix specifies some metadata about the flake such as dependencies (called inputs), as well as its outputs (the Nix values such as packages or NixOS modules provided by the flake).
 
 # Home Manager
-![] image
+![Alt text](https://github.com/kemalmao19/flake/blob/main/gallery/nix.png)
+
 Nix Home Manager is a component of the Nix package manager ecosystem. Nix is a powerful package manager for Unix-like operating systems that provides a purely functional and declarative approach to package management. It allows users to define and manage software packages and configurations in a reproducible manner.
 
 Nix Home Manager, specifically, is a tool that extends Nix to manage the configuration of user-specific packages and settings on a per-user basis. It allows users to define and manage their personal environment, including things like shell configurations, text editor settings, window manager configurations, and other user-specific software packages, all within a user's home directory.
@@ -21,7 +22,7 @@ By using Nix Home Manager in combination with the Nix package manager, you can c
 # How to use my flake
 
 ## With nix build command 
-### choose
+### choose one
 ### nix build .#homeConfigurations.<USER_ATTRIBUTES>.activationPackage
 nix build .#homeConfigurations.kemalmao.activationPackage
 
