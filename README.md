@@ -21,24 +21,75 @@ By using Nix Home Manager in combination with the Nix package manager, you can c
 
 # How to use my flake
 
-## With nix build command 
-### choose one
-### nix build .#homeConfigurations.<USER_ATTRIBUTES>.activationPackage
-nix build .#homeConfigurations.kemalmao.activationPackage
+##### Linux Single User
 
-or
+```console
+sh <(curl -L https://nixos.org/nix/install) --daemon
+```
 
-## With home-manager command
-### home-manager build .#<USER_ATTRIBUTES>
-home-manager build .#kemalmao
+##### Linux Multi User
 
+```console
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
+```
 
-### choose one
-## Switch With activate command from ./result
-./result/activate
+##### Darwin Multi User
 
-or
+```console
+sh <(curl -L https://nixos.org/nix/install)
+```
 
-## With home-manager command
-home-manager switch --flake .#kemal
+#### Enable `experimental-features`
+
+In general installation of nix, the nix configuration is located in `~/.config/nix/nix.conf`.
+You **MUST** be set the `experimental-features` before use [this configuration](https://github.com/r17x/nixpkgs).
+
+```cfg
+experimental-features = nix-command flakes
+
+// (optional) for distribution cache (DON'T COPY THIS COMMENT LINE)
+substituters = https://cache.nixos.org https://cache.nixos.org/ https://r17.cachix.org
+```
+
+### Setup
+
+- Clone [this repository](https://github.com/r17x/nixpkgs)
+
+```console
+// with SSH
+
+git clone git@github.com:r17x/nixpkgs ~/.config/nixpkgs
+
+// OR with HTTP
+git clone https://github.com/r17x/nixpkgs ~/.config/nixpkgs
+
+```
+
+- Change directory to `~/.config/nixpkgs`
+
+```console
+cd ~/.config/nixpkgs
+```
+
+- Run Build  
+  command for build: `nix build .#darwinConfigurations.[NAME].system`  
+  Available for `[NAME]`:
+  - `RG`
+
+```console
+nix build .#darwinConfigurations.RG.system
+```
+
+- Apply from `Result`  
+  command for apply the result: `./result/sw/bin/darwin-rebuild switch --flake .#[NAME]`  
+  Available for `[NAME]`:
+  - `RG`  
+    After `Run Build` you can apply from `./result` with this command
+
+```console
+./result/sw/bin/darwin-rebuild switch --flake .#RG
+```
+
+- Done 🚀🎉
+
 
