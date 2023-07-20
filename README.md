@@ -37,18 +37,17 @@ sh <(curl -L https://nixos.org/nix/install) --no-daemon
 #### Enable `experimental-features`
 
 In general installation of nix, the nix configuration is located in `~/.config/nix/nix.conf`.
-You **MUST** be set the `experimental-features` before use [this configuration](https://github.com/r17x/nixpkgs).
+You **MUST** be set the `experimental-features` before use [this configuration](https://github.com/kemalmao19/flake).
 
 ```cfg
-experimental-features = nix-command flakes
+mkdir -p ~/.config/nix
 
-// (optional) for distribution cache (DON'T COPY THIS COMMENT LINE)
-substituters = https://cache.nixos.org https://cache.nixos.org/ https://r17.cachix.org
+echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 ```
 
 ### Setup
 
-- Clone [this repository](https://github.com/r17x/nixpkgs)
+- Clone [this repository](https://github.com/kemalmao19/flake)
 
 ```console
 // with SSH
