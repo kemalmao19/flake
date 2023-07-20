@@ -53,38 +53,38 @@ substituters = https://cache.nixos.org https://cache.nixos.org/ https://r17.cach
 ```console
 // with SSH
 
-git clone git@github.com:r17x/nixpkgs ~/.config/nixpkgs
+git clone git@github.com:kemalmao19/flake
 
 // OR with HTTP
-git clone https://github.com/r17x/nixpkgs ~/.config/nixpkgs
+git clone https://github.com/kemalmao19/flake
 
 ```
 
-- Change directory to `~/.config/nixpkgs`
+- Change directory to `flake`
 
 ```console
-cd ~/.config/nixpkgs
+cd flake
 ```
 
 - Run Build  
-  command for build: `nix build .#darwinConfigurations.[NAME].system`  
+  command for build: `nix build .#homeConfigurations.[NAME].activationPackage`  
   Available for `[NAME]`:
-  - `RG`
+  - `kemalmao`
 
 ```console
-nix build .#darwinConfigurations.RG.system
+nix build .#homeConfigurations.kemalmao.activationPackage
 ```
 
 - Apply from `Result`  
-  command for apply the result: `./result/sw/bin/darwin-rebuild switch --flake .#[NAME]`  
+  command for apply the result: `./result/activation`  
   Available for `[NAME]`:
-  - `RG`  
-    After `Run Build` you can apply from `./result` with this command
+  - `kemalmao`  
+    After `Run Build` you can apply from `./result/activation` with this command
 
 ```console
-./result/sw/bin/darwin-rebuild switch --flake .#RG
+./result/activation
 ```
 
-- Done 🚀🎉
+- Done 
 
 
