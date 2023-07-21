@@ -13,7 +13,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       homeConfigurations = {
-        kemal = home-manager.lib.homeManagerConfiguration {
+        kemalmao = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
             ({ config, lib, pkgs, ... }: { imports = [ ./nixpkgs/home.nix ]; })
