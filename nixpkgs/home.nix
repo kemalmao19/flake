@@ -12,9 +12,8 @@
     ./packages.nix
     ./shell.nix
     ./alacritty.nix
-    #./python.nix
+    ./starship-symbol.nix
     ./git.nix
-    #./terminal.nix
     #./config.nix
   ];
 }
