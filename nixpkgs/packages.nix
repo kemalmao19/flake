@@ -13,5 +13,6 @@
     exa
     # tmux
     nixfmt
+    trash-cli
   ];
 }

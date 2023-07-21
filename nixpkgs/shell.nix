@@ -69,6 +69,15 @@
       };
     };
   };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+    options = [
+      # "--no-aliases"
+    ];
+  };
+  
   # programs.neovim = {
   #   enable = true;
   #   viAlias = true;
