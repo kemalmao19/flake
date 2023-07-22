@@ -11,6 +11,7 @@
   imports = [
     ./packages.nix
     ./shell.nix
+    ./terminal.nix
     # ./alacritty.nix
     ./starship_symbol.nix
     ./git.nix
