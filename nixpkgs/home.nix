@@ -11,9 +11,9 @@
   imports = [
     ./packages.nix
     ./shell.nix
-    ./alacritty.nix
+    # ./alacritty.nix
     ./starship_symbol.nix
     ./git.nix
-    #./config.nix
+    # ./config.nix
   ];
 }
