@@ -12,7 +12,7 @@
     ./packages.nix
     ./shell.nix
     ./alacritty.nix
-#     ./starship-symbol.nix
+    ./starship_symbol.nix
     ./git.nix
     #./config.nix
   ];
