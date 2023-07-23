@@ -20,6 +20,7 @@ By using Nix Home Manager in combination with the Nix package manager, you can c
 
 
 # How to use my flake
+### Prerequisite
 
 ##### Linux Single User
 
