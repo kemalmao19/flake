@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "kemalmao";
-  home.homeDirectory = "/home/kemalmao";
+  home.username = "kemal";
+  home.homeDirectory = "/home/kemal";
   home.stateVersion = "23.05";
   programs.home-manager.enable = true;
   programs.direnv.enable = true;

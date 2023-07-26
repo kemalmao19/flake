@@ -12,7 +12,11 @@
     bottom
     exa
     # tmux
+    blackbox-terminal
     nixfmt
     trash-cli
+    chromium
+    vscodium
+    simplescreenrecorder
   ];
 }
