@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  catppucinn = {
+  gtk = {
     enable = true;
     theme = {
       name = "Catppuccin-Macchiato-Compact-Pink-dark";
@@ -13,15 +13,4 @@
     };
   };
 
-    gruvboxx = {
-      enable = true;
-      theme = {
-        name = "gruvbox-gtk";
-        package = pkgs.gruvbox-gtk-theme;
-      iconTheme = {
-        name = "gruvbox-icon";
-        package = pkgs.gruvbox-dark-icons-gtk;
-        };
-      };
-    }; 
 }

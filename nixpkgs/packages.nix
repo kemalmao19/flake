@@ -1,22 +1,26 @@
 { config, pkgs, ... }: {
   home.packages = with pkgs; [
+    # Fun
     neofetch
-    # wget 
-    #firefox 
-    #simplenote 
     ranger
-    # appimage-run
+
+    # File
+    appimage-run
     # zip 
     # unzip 
+
+    # shell
     bat
     bottom
     exa
-    # tmux
-    blackbox-terminal
     nixfmt
     trash-cli
-    chromium
+    cava
+    blackbox-terminal
+
+    # dev
     vscodium
-    simplescreenrecorder
+    
+
   ];
 }

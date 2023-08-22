@@ -1,1 +1,2 @@
+{config, pkgs, ...}:
 { allowUnfree = true; }

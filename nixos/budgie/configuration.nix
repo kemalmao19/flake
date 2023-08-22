@@ -14,6 +14,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # boot.plymouth.enable = true;
+  # boot.initrd.systemd.enable = true;
+  # boot.kernelParams = ["quiet"];
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -42,31 +46,42 @@
     LC_TIME = "id_ID.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
+  # Enable the X11 windowing system
   # Configure keymap in X11
   services.xserver = {
+    enable = true;
     layout = "us";
     xkbVariant = "";
+
+    # DM
+    displayManager = {
+      sddm.enable = true;
+      sddm.theme = "${import ./sddm-themes.nix { inherit pkgs; }}";
+      };
+    # DE
+    desktopManager = {
+      budgie.enable = true;
+    };
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.printing.drivers = [ 
-    pkgs.epson-201401w
-    pkgs.hplip 
+  services.printing = {
+    enable = true;
+    drivers = [
+      pkgs.epson-201401w
+      pkgs.hplip
     ];
+  };
 
   # Scanner
   hardware.sane = {
     enable = true;
-    extraBackends = [ pkgs.hplipWithPlugin ];
-    };
+    extraBackends = [
+      pkgs.hplipWithPlugin
+    ];
+  };
+
+  
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -95,21 +110,49 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       # firefox
+      chromium
+      libreoffice-fresh
+      dbeaver
+      xarchiver
     #  thunderbird
-    pkgs.gnome3.gnome-tweaks
-    pkgs.onlyoffice-bin
-    ];
+   ];
   };
+
+  # fonts
+  fonts.fonts = with pkgs; [
+     (nerdfonts.override { fonts = [ "FiraCode" "Hack" "Iosevka"]; })
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
+    # nordzy-icon-theme
+    whitesur-icon-theme
+    # nordzy-cursor-theme
+    apple-cursor
+
+    conky
+
+    # sddm dependecy
+    libsForQt5.qt5.qtquickcontrols2   
+    libsForQt5.qt5.qtgraphicaleffects
+    
   ];
+
+  # Mariadb 
+  services.mysql = {
+    package = pkgs.mariadb;
+    enable = true;
+    # dataDir = "/home/kemal/mysql/data"; # By default the data is stored in /var/lib/mysql
+  };
+
+  
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -138,11 +181,9 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
 
-  # flatpak
+  # Flatpak
   # services.flatpak.enable = true;
-
+  
   # Kernel
   boot.kernelPackages = pkgs.linuxPackages_6_4;
-
 }
-
