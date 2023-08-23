@@ -8,6 +8,10 @@
 			  ipython
 			  ipykernel
 
+				# Spyder IDE
+				spyder
+				spyder-kernels
+
 			  # DS
 			  matplotlib
 			  numpy

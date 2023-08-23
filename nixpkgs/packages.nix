@@ -19,8 +19,7 @@
     blackbox-terminal
 
     # dev
-    vscodium
-    
+    # vscodium
 
   ];
 }

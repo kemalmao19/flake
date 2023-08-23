@@ -1,14 +1,14 @@
 { pkgs }:
 
 let
-  imgLink = "https://raw.githubusercontent.com/NixOS/nixos-artwork/f07707cecfd89bc1459d5dad76a3a4c5315efba1/wallpapers/nix-wallpaper-nineish-dark-gray.png";
+  imgLink =
+    "https://raw.githubusercontent.com/NixOS/nixos-artwork/f07707cecfd89bc1459d5dad76a3a4c5315efba1/wallpapers/nix-wallpaper-nineish-dark-gray.png";
 
   image = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/f07707cecfd89bc1459d5dad76a3a4c5315efba1/wallpapers/nix-wallpaper-nineish-dark-gray.png";
+    url = imgLink;
     sha256 = "07zl1dlxqh9dav9pibnhr2x1llywwnyphmzcdqaby7dz5js184ly";
   };
-in
-pkgs.stdenv.mkDerivation {
+in pkgs.stdenv.mkDerivation {
   name = "sddm-theme";
   src = pkgs.fetchFromGitHub {
     owner = "MarianArlt";
@@ -22,5 +22,5 @@ pkgs.stdenv.mkDerivation {
     cd $out/
     rm Background.jpg
     cp -r ${image} $out/Background.jpg
-   '';
+  '';
 }
