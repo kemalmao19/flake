@@ -1,6 +1,7 @@
 { config, pkgs, ... }: {
   home.packages = with pkgs; [
     # Fun
+    pfetch
     neofetch
     ranger
 

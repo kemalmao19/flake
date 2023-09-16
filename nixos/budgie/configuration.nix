@@ -17,7 +17,7 @@
   # boot.initrd.systemd.enable = true;
   # boot.kernelParams = ["quiet"];
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "NixbookPro"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -58,7 +58,10 @@
       sddm.theme = "${import ./sddm-themes.nix { inherit pkgs; }}";
     };
     # DE
-    desktopManager = { budgie.enable = true; };
+    desktopManager = { 
+      budgie.enable = true;
+      # enlightenment.enable = true;
+     };
   };
 
   # Enable CUPS to print documents.
@@ -98,6 +101,7 @@
     isNormalUser = true;
     description = "kemal";
     extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.fish; 
     packages = with pkgs; [
       # firefox
       chromium
@@ -131,14 +135,36 @@
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
 
+    # CPU autofreq
+    auto-cpufreq
+
+    # fish
+    fishPlugins.done
+    fishPlugins.fzf-fish
+    fishPlugins.forgit
+    fishPlugins.hydro
+    fzf
+    fishPlugins.grc
+    grc
+
+    # gestures
+    # fusuma
+    # xdotool
+
   ];
 
+  programs.fish.enable = true;
+
   # Mariadb 
-  services.mysql = {
-    package = pkgs.mariadb;
-    enable = true;
+  # services.mysql = {
+    # package = pkgs.mariadb;
+    # enable = true;
     # dataDir = "/home/kemal/mysql/data"; # By default the data is stored in /var/lib/mysql
-  };
+  # };
+
+  # systemd cpu
+  systemd.packages = [ pkgs.auto-cpufreq ];
+  systemd.services.auto-cpufreq.path = with pkgs; [ bash coreutils ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -170,6 +196,34 @@
   # Flatpak
   # services.flatpak.enable = true;
 
+  # flake
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Kernel
   boot.kernelPackages = pkgs.linuxPackages_6_4;
+
+  # CPU auto services
+  services.auto-cpufreq.enable = true;
+
+  # Gestures for x11
+  # programs.fusuma = {
+  #   enable = true;
+  #   extraPackages = with pkgs; [ xdotool ];
+  #   settings = {
+  #     threshold = { swipe = 0.1; };
+  #     interval = { swipe = 0.7; };
+  #     swipe = {
+  #       "3" = {
+  #         left = {
+  #           # GNOME: Switch to left workspace
+  #           command = "xdotool key alt+super+Left";
+  #         };
+  #         right = {
+  #           # GNOME: Switch to right workspace
+  #           command = "xdotool key alt+super+Right";
+  #         };
+  #       };
+  #     };
+  #   };
+  # };
 }
