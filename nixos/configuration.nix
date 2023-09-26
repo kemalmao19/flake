@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -58,11 +58,22 @@
       sddm.theme = "${import ./sddm-themes.nix { inherit pkgs; }}";
     };
     # DE
-    desktopManager = { 
-      budgie.enable = true;
+    desktopManager = {
+      # budgie.enable = true;
+      pantheon.enable = true;
+      # xfce.enable = true;
       # enlightenment.enable = true;
-     };
+    };
   };
+
+  # Pantheo Desktop
+
+  # services.xserver.desktopManager.pantheon.extraWingpanelIndicators
+  # services.xserver.desktopManager.pantheon.extraSwitchboardPlugs
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  programs.pantheon-tweaks.enable = true;
 
   # Enable CUPS to print documents.
   services.printing = {
@@ -92,7 +103,6 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -101,12 +111,12 @@
     isNormalUser = true;
     description = "kemal";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish; 
+    shell = pkgs.fish;
     packages = with pkgs; [
       # firefox
       chromium
-      libreoffice-fresh
-      dbeaver
+      # libreoffice-fresh
+      # dbeaver
       xarchiver
       #  thunderbird
     ];
@@ -129,14 +139,14 @@
     # nordzy-cursor-theme
     apple-cursor
 
-    conky
+    # conky
 
     # sddm dependecy
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
 
     # CPU autofreq
-    auto-cpufreq
+    # auto-cpufreq
 
     # fish
     fishPlugins.done
@@ -147,9 +157,10 @@
     fishPlugins.grc
     grc
 
-    # gestures
-    # fusuma
-    # xdotool
+    # patheon
+    pantheon.appcenter
+
+    
 
   ];
 
@@ -157,14 +168,48 @@
 
   # Mariadb 
   # services.mysql = {
-    # package = pkgs.mariadb;
-    # enable = true;
-    # dataDir = "/home/kemal/mysql/data"; # By default the data is stored in /var/lib/mysql
+  # package = pkgs.mariadb;
+  # enable = true;
+  # dataDir = "/home/kemal/mysql/data"; # By default the data is stored in /var/lib/mysql
   # };
 
   # systemd cpu
-  systemd.packages = [ pkgs.auto-cpufreq ];
-  systemd.services.auto-cpufreq.path = with pkgs; [ bash coreutils ];
+  # systemd.packages = [ pkgs.auto-cpufreq ];
+  # systemd.services.auto-cpufreq.path = with pkgs; [ bash coreutils ];
+
+  services.acpid.enable = true;
+  powerManagement.enable = true;
+  # powerManagement.cpuFreqGovernor = "schedutil";
+
+  services.mbpfan = {
+    enable = true;
+    settings = {
+      general = {
+        min_fan1_speed = 2000;
+        max_fan1_speed = 6200;
+        high_temp = 61;
+        low_temp = 55;
+        max_temp = 87;
+      };
+    };
+  };  
+  hardware.cpu.intel.updateMicrocode = true;
+  
+  hardware.opengl.extraPackages = with pkgs; [
+    vaapiIntel
+    vaapiVdpau
+    libvdpau-va-gl
+    intel-media-driver
+  ];
+  boot = {
+    kernelModules = [ "applesmc" "i915" ];
+    # https://forum.manjaro.org/t/kworker-kacpid-over-70-of-cpu-dual-boot-mac-manjaro/61981
+    kernelParams = [ "acpi_mask_gpe=0x17" ];
+  };
+
+  services.xserver.deviceSection = lib.mkDefault ''
+    Option "TearFree" "true"
+  '';
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -203,27 +248,6 @@
   boot.kernelPackages = pkgs.linuxPackages_6_4;
 
   # CPU auto services
-  services.auto-cpufreq.enable = true;
+  # services.auto-cpufreq.enable = true;
 
-  # Gestures for x11
-  # programs.fusuma = {
-  #   enable = true;
-  #   extraPackages = with pkgs; [ xdotool ];
-  #   settings = {
-  #     threshold = { swipe = 0.1; };
-  #     interval = { swipe = 0.7; };
-  #     swipe = {
-  #       "3" = {
-  #         left = {
-  #           # GNOME: Switch to left workspace
-  #           command = "xdotool key alt+super+Left";
-  #         };
-  #         right = {
-  #           # GNOME: Switch to right workspace
-  #           command = "xdotool key alt+super+Right";
-  #         };
-  #       };
-  #     };
-  #   };
-  # };
 }
