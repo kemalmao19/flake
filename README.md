@@ -1,4 +1,4 @@
-# MacOS Home Manager with Nix
+# Nix Home Manager 
 
 This is simple nix flake for darwin
 
@@ -32,25 +32,25 @@ Easy install with determinate systems:
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-### Setup
-
-- Clone [this repository](https://github.com/kemalmao19/flake-darwin)
+- Clone [this repository](https://github.com/kemalmao19/flake)
 
 ```console
 // with SSH
 
-git clone git@github.com:kemalmao19/flake-darwin
+git clone git@github.com:kemalmao19/flake
 
 // OR with HTTP
-git clone https://github.com/kemalmao19/flake-darwin
+git clone https://github.com/kemalmao19/flake
 
 ```
 
-- Change directory to `flake-darwin`
+- Change directory to `flake`
 
 ```console
-cd flake-darwin
+cd flake
 ```
+
+## Nix Darwin + Home manager
 
 - Run Build  
   command for build: `nix build .#darwinConfigurations.[NAME].system`  
@@ -72,3 +72,34 @@ darwin-rebuild switch --flake .#kemalmao
 ```
 
 - Done
+
+## Nix Linux Home Manager
+
+- Run Build  
+  command for build: `nix build .#homeConfigurations.[NAME].activationPackage`  
+  Available for `[NAME]`:
+  - `kemalmao`
+
+```console
+nix build .#homeConfigurations.kemalmao.activationPackage
+```
+
+- Apply Build result
+  command for apply the result: `./result/activate`  
+```console
+./result/activate
+```
+
+- Done
+
+## Nixos 
+You can try 
+```console
+nixos rebuild switch -I nixos-config=nixos/configuration.nix
+```
+
+or (not tested bcz i dont use nixos for rightnow, u can try or modif the flake)
+```console
+nixos-rebuild switch --flake
+```
+
