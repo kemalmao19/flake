@@ -160,8 +160,6 @@
     # patheon
     pantheon.appcenter
 
-    
-
   ];
 
   programs.fish.enable = true;
@@ -192,9 +190,9 @@
         max_temp = 87;
       };
     };
-  };  
+  };
   hardware.cpu.intel.updateMicrocode = true;
-  
+
   hardware.opengl.extraPackages = with pkgs; [
     vaapiIntel
     vaapiVdpau
@@ -236,7 +234,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
   # Flatpak
   # services.flatpak.enable = true;
