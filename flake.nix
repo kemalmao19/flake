@@ -58,7 +58,7 @@
       modules = [ ./modules/home-manager/home-linux.nix ];
     };
 
-    # nixos | not tested, you cab try or modif
+    # nixos | not tested, you can try or modif
     nixosConfigurations."x86_64-linux" = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [ ./nixos/configuration.nix ];

@@ -8,10 +8,10 @@
     vimAlias = true;
     plugins = import ./plugins.nix { inherit pkgs; };
     extraConfig = ''
-      luafile ~/flake-darwin/modules/home-manager/packages/neovim/config/core/options.lua
-      luafile ~/flake-darwin/modules/home-manager/packages/neovim/config/core/keymaps.lua
-      luafile ~/flake-darwin/modules/home-manager/packages/neovim/config/core/snippet.lua
-      luafile ~/flake-darwin/modules/home-manager/packages/neovim/config/core/misc.lua
+      luafile ~/flake/modules/home-manager/packages/neovim/config/core/options.lua
+      luafile ~/flake/modules/home-manager/packages/neovim/config/core/keymaps.lua
+      luafile ~/flake/modules/home-manager/packages/neovim/config/core/snippet.lua
+      luafile ~/flake/modules/home-manager/packages/neovim/config/core/misc.lua
     '';
   };
   # easy mode
