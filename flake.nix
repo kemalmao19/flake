@@ -43,7 +43,7 @@
             useGlobalPkgs = true;
             useUserPackages = true;
             extraSpecialArgs = { inherit inputs; };
-            users.kemal.imports = [ ./modules/home-manager ];
+            users.kemal.imports = [ ./modules/home-manager/home-darwin.nix ];
           };
           users.users.kemal.home = "/Users/kemal";
         }

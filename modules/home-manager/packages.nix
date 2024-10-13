@@ -1,17 +1,8 @@
 { pkgs, ... }: {
-  # Don't change this when you change package input. Leave it alone.
-  home.stateVersion = "23.05";
-  home.sessionVariables = {
-    PAGER = "less";
-    CLICLOLOR = 1;
-    EDITOR = "nvim";
-  };
-
-  nixpkgs.overlays = [ ../../overlays/default.nix ];
-
-  # specify my home-manager configs
-  # App bundle
   home.packages = with pkgs; [
+    # terminal
+    blackbox-terminal
+
     trash-cli
     ranger
     neofetch
@@ -42,7 +33,7 @@
   ];
 
   imports = [
-    ./packages/vscode
+    #./packages/vscode
     ./packages/starship
     ./packages/starship/starship-symbol.nix
     # ./packages/helix.nix
@@ -57,4 +48,5 @@
   ];
   # dotfiles
   home.file.".inputrc".source = ./dotfiles/inputrc;
+  home.file.".config/kitty/".source = ./dotfiles/config/kitty;
 }
