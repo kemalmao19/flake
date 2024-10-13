@@ -49,4 +49,5 @@
   # dotfiles
   home.file.".inputrc".source = ./dotfiles/inputrc;
   home.file.".config/kitty/".source = ./dotfiles/config/kitty;
+  home.file.".config/neofetch/".source = ./dotfiles/config/neofetch;
 }

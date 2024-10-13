@@ -9,5 +9,5 @@
 
   nixpkgs.overlays = [ ../../overlays/default.nix ];
 
-  import = [ ./packages.nix ];
+  imports = [ ./packages.nix ];
 }
