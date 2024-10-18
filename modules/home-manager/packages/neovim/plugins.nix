@@ -15,6 +15,7 @@ let
       vim-rescript
       vim-nix
       vim-tmux-navigator
+      nvim-treesitter-parsers.vala
 
       # bufferline dep
       vim-bbye

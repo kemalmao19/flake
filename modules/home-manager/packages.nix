@@ -1,8 +1,5 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    # terminal
-    blackbox-terminal
-
     trash-cli
     ranger
     neofetch
@@ -25,6 +22,7 @@
     nixd
 
     #node
+    pnpm
     nodejs_20
     nodePackages."typescript"
     nodePackages."typescript-language-server"
