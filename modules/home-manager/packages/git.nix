@@ -1,6 +1,6 @@
 { pkgs, ... }: {
 
-  programs.git-credential-oauth.enable = true;
+  programs.gh.gitCredentialHelper = { enable = true; };
   programs.git = {
     enable = true;
     userName = "kemalmao19";
