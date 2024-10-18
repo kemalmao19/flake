@@ -77,13 +77,13 @@
         darwin.lib.darwinSystem {
           lib = nixpkgs.lib;
           pkgs = pkgs system;
-          modules = [ ./modules/darwin mkHomeConfig system username ];
+          modules = [ ./modules/darwin (mkHomeConfig system username) ];
         };
     in {
       # darwin & darwin home manager
       darwinConfigurations.${user.name} = mkDarwinConfig user.darwin user.name;
 
-      # home manager 
+      # linux home manager 
       homeConfigurations.${user.name} = mkHomeConfig user.linux user.name;
 
       # nixos | not tested, you can try or modif
