@@ -6,5 +6,5 @@
 
   };
 
-  programs.gh.gitCredentialHelper.enable = true;
+  programs.git-credential-oauth.enable = true;
 }
