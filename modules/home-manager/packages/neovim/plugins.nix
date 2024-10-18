@@ -15,7 +15,6 @@ let
       vim-rescript
       vim-nix
       vim-tmux-navigator
-      nvim-treesitter-parsers.vala
 
       # bufferline dep
       vim-bbye
@@ -160,6 +159,13 @@ let
         plugin = codeium-nvim;
         type = "lua";
         config = openFile ./config/plugins/codeium.lua;
+      }
+      {
+        plugin = neogit;
+        type = "lua";
+        config = ''
+          local neogit = require('neogit')
+          neogit.setup {}'';
       }
     ];
 in packaged ++ customPackages
