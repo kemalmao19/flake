@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -13,9 +13,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # boot.plymouth.enable = true;
-  # boot.initrd.systemd.enable = true;
-  # boot.kernelParams = ["quiet"];
+  boot.plymouth.enable = true;
+  boot.initrd.systemd.enable = true;
 
   networking.hostName = "NixbookPro"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -49,42 +48,45 @@
   # Configure keymap in X11
   services.xserver = {
     enable = true;
-    layout = "us";
-    xkbVariant = "";
-
-    # DM
-    displayManager = {
-      sddm.enable = true;
-      sddm.theme = "${import ./sddm-themes.nix { inherit pkgs; }}";
-    };
+    xkb.layout = "us";
+    xkb.variant = "";
     # DE
     desktopManager = {
       # budgie.enable = true;
-      pantheon.enable = true;
+      # pantheon.enable = true;
+      gnome.enable = true;
       # xfce.enable = true;
       # enlightenment.enable = true;
     };
   };
 
-  # Pantheo Desktop
+  # DM
+  services.displayManager = {
+    sddm.enable = true;
+    sddm.theme = "${import ./sddm-theme.nix { inherit pkgs; }}";
+  };
 
+  # Pantheo Desktop
   # services.xserver.desktopManager.pantheon.extraWingpanelIndicators
-  # services.xserver.desktopManager.pantheon.extraSwitchboardPlugs
-  services.flatpak.enable = true;
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  programs.pantheon-tweaks.enable = true;
+  # services.xserver.desktopManager.pantheon.extraSwitchboardPlugs 
+  # xdg.portal.enable = true;
+  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  # programs.pantheon-tweaks.enable = true;
 
   # Enable CUPS to print documents.
   services.printing = {
     enable = true;
-    drivers = [ pkgs.epson-201401w pkgs.hplip ];
+    drivers = [
+      #pkgs.epson-201401w pkgs.hplip 
+    ];
   };
 
   # Scanner
   hardware.sane = {
     enable = true;
-    extraBackends = [ pkgs.hplipWithPlugin ];
+    extraBackends = [
+      #pkgs.hplipWithPlugin 
+    ];
   };
 
   # Enable sound with pipewire.
@@ -107,14 +109,14 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.kemal = {
+  users.users.kemalmao = {
     isNormalUser = true;
-    description = "kemal";
+    description = "kemalmao";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.fish;
     packages = with pkgs; [
-      # firefox
-      chromium
+      firefox-esr
+      # chromium
       # libreoffice-fresh
       # dbeaver
       xarchiver
@@ -123,44 +125,34 @@
   };
 
   # fonts
-  fonts.fonts = with pkgs;
-    [ (nerdfonts.override { fonts = [ "FiraCode" "Hack" "Iosevka" ]; }) ];
+  # fonts.fonts = with pkgs;
+  #  [ (nerdfonts.override { fonts = [ "FiraCode" "Hack" "Iosevka" ]; }) ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  services.flatpak.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
-    # nordzy-icon-theme
-    whitesur-icon-theme
-    # nordzy-cursor-theme
-    apple-cursor
+  environment.systemPackages = with pkgs;
+    [
+      whitesur-icon-theme
+      apple-cursor
 
-    # conky
+      # conky
 
-    # sddm dependecy
-    libsForQt5.qt5.qtquickcontrols2
-    libsForQt5.qt5.qtgraphicaleffects
+      # sddm dependecy
+      libsForQt5.qt5.qtquickcontrols2
+      libsForQt5.qt5.qtgraphicaleffects
 
-    # CPU autofreq
-    # auto-cpufreq
+      # CPU autofreq
+      # auto-cpufreq
 
-    # fish
-    fishPlugins.done
-    fishPlugins.fzf-fish
-    fishPlugins.forgit
-    fishPlugins.hydro
-    fzf
-    fishPlugins.grc
-    grc
+      # patheon
+      # pantheon.appcenter
 
-    # patheon
-    pantheon.appcenter
-
-  ];
+    ]
+    ++ (with gnomeExtensions; [ gsconnect appindicator hide-top-bar dashbar ]);
 
   programs.fish.enable = true;
 
@@ -181,15 +173,15 @@
 
   services.mbpfan = {
     enable = true;
-    settings = {
-      general = {
-        min_fan1_speed = 2000;
-        max_fan1_speed = 6200;
-        high_temp = 61;
-        low_temp = 55;
-        max_temp = 87;
-      };
-    };
+    #settings = {
+    #  general = {
+    #    min_fan1_speed = 2000;
+    #    max_fan1_speed = 6200;
+    #    high_temp = 61;
+    #    low_temp = 55;
+    #    max_temp = 87;
+    #  };
+    #};
   };
   hardware.cpu.intel.updateMicrocode = true;
 
@@ -202,7 +194,7 @@
   boot = {
     kernelModules = [ "applesmc" "i915" ];
     # https://forum.manjaro.org/t/kworker-kacpid-over-70-of-cpu-dual-boot-mac-manjaro/61981
-    kernelParams = [ "acpi_mask_gpe=0x17" ];
+    kernelParams = [ "acpi_mask_gpe=0x17" "quite" ];
   };
 
   services.xserver.deviceSection = lib.mkDefault ''
@@ -243,7 +235,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_6_4;
+  # boot.kernelPackages = pkgs.linuxPackages_6_4;
 
   # CPU auto services
   # services.auto-cpufreq.enable = true;

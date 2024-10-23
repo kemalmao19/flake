@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   home.stateVersion = "24.05";
@@ -9,4 +9,6 @@
   #nixpkgs.overlays = [ ../../overlays/default.nix ];
 
   imports = [ ./packages.nix ];
+
+  home.packages = with pkgs; [ ibus-engines.mozc ];
 }
