@@ -9,12 +9,14 @@
     ./hardware-configuration.nix
   ];
 
+  system.stateVersion = "24.05";
+
+  # flake
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  boot.plymouth.enable = true;
-  boot.initrd.systemd.enable = true;
 
   networking.hostName = "NixbookPro"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -50,14 +52,7 @@
     enable = true;
     xkb.layout = "us";
     xkb.variant = "";
-    # DE
-    desktopManager = {
-      # budgie.enable = true;
-      # pantheon.enable = true;
-      gnome.enable = true;
-      # xfce.enable = true;
-      # enlightenment.enable = true;
-    };
+    desktopManager = { gnome.enable = true; };
   };
 
   # DM
@@ -66,31 +61,20 @@
     sddm.theme = "${import ./sddm-theme.nix { inherit pkgs; }}";
   };
 
-  # Pantheo Desktop
-  # services.xserver.desktopManager.pantheon.extraWingpanelIndicators
-  # services.xserver.desktopManager.pantheon.extraSwitchboardPlugs 
-  # xdg.portal.enable = true;
-  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  # programs.pantheon-tweaks.enable = true;
-
   # Enable CUPS to print documents.
   services.printing = {
     enable = true;
-    drivers = [
-      #pkgs.epson-201401w pkgs.hplip 
-    ];
+    drivers = [ pkgs.epson-201401w pkgs.hplip ];
   };
 
   # Scanner
   hardware.sane = {
     enable = true;
-    extraBackends = [
-      #pkgs.hplipWithPlugin 
-    ];
+    extraBackends = [ pkgs.hplipWithPlugin ];
   };
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  # sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -105,8 +89,6 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kemalmao = {
@@ -123,10 +105,6 @@
       #  thunderbird
     ];
   };
-
-  # fonts
-  # fonts.fonts = with pkgs;
-  #  [ (nerdfonts.override { fonts = [ "FiraCode" "Hack" "Iosevka" ]; }) ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -156,13 +134,6 @@
 
   programs.fish.enable = true;
 
-  # Mariadb 
-  # services.mysql = {
-  # package = pkgs.mariadb;
-  # enable = true;
-  # dataDir = "/home/kemal/mysql/data"; # By default the data is stored in /var/lib/mysql
-  # };
-
   # systemd cpu
   # systemd.packages = [ pkgs.auto-cpufreq ];
   # systemd.services.auto-cpufreq.path = with pkgs; [ bash coreutils ];
@@ -185,6 +156,7 @@
   };
   hardware.cpu.intel.updateMicrocode = true;
 
+  # rename to ...graphics...
   hardware.opengl.extraPackages = with pkgs; [
     vaapiIntel
     vaapiVdpau
@@ -194,7 +166,7 @@
   boot = {
     kernelModules = [ "applesmc" "i915" ];
     # https://forum.manjaro.org/t/kworker-kacpid-over-70-of-cpu-dual-boot-mac-manjaro/61981
-    kernelParams = [ "acpi_mask_gpe=0x17" "quite" ];
+    kernelParams = [ "acpi_mask_gpe=0x17" ];
   };
 
   services.xserver.deviceSection = lib.mkDefault ''
@@ -220,24 +192,17 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
-
-  # Flatpak
-  # services.flatpak.enable = true;
-
-  # flake
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   # Kernel
   # boot.kernelPackages = pkgs.linuxPackages_6_4;
 
   # CPU auto services
-  # services.auto-cpufreq.enable = true;
+  # services.auto-cpufreq.enable = true;  
+
+  # Mariadb 
+  # services.mysql = {
+  # package = pkgs.mariadb;
+  # enable = true;
+  # dataDir = "/home/kemal/mysql/data"; # By default the data is stored in /var/lib/mysql
+  # };
 
 }

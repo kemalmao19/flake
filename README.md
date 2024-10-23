@@ -90,16 +90,12 @@ nix build .#homeConfigurations.kemalmao.activationPackage
 ./result/activate
 ```
 
+
 - Done
 
 ## Nixos 
 You can try 
-```console
-nixos rebuild switch -I nixos-config=nixos/configuration.nix
-```
 
-or (not tested bcz i dont use nixos for rightnow, u can try or modif the flake)
 ```console
-nixos-rebuild switch --flake
+sudo nixos-rebuild switch --flake .#kemalmao
 ```
-

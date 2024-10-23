@@ -66,11 +66,10 @@
           };
 
       # Define Func for NixOS configuration
-      mkNixosConfig = username:
-        nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [ ./nixos/configuration.nix ];
-        };
+      mkNixosConfig = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [ ./nixos/configuration.nix ];
+      };
 
       # Define Func for Darwin configuration
       mkDarwinConfig = system: username:
@@ -87,6 +86,6 @@
       homeConfigurations.${user.name} = mkHomeConfig user.linux user.name;
 
       # nixos | not tested, you can try or modif
-      nixosConfigurations.${user.linux} = mkNixosConfig user.name;
+      nixosConfigurations.kemalmao = mkNixosConfig;
     };
 }
