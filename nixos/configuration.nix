@@ -7,6 +7,7 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./ui.nix
   ];
 
   system.stateVersion = "24.05";
@@ -52,13 +53,6 @@
     enable = true;
     xkb.layout = "us";
     xkb.variant = "";
-    desktopManager = { gnome.enable = true; };
-  };
-
-  # DM
-  services.displayManager = {
-    sddm.enable = true;
-    sddm.theme = "${import ./sddm-theme.nix { inherit pkgs; }}";
   };
 
   # Enable CUPS to print documents.
@@ -74,7 +68,6 @@
   };
 
   # Enable sound with pipewire.
-  # sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -112,25 +105,23 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs;
-    [
-      whitesur-icon-theme
-      apple-cursor
+  environment.systemPackages = with pkgs; [
+    whitesur-icon-theme
+    apple-cursor
 
-      # conky
+    # conky
 
-      # sddm dependecy
-      libsForQt5.qt5.qtquickcontrols2
-      libsForQt5.qt5.qtgraphicaleffects
+    # sddm dependecy
+    libsForQt5.qt5.qtquickcontrols2
+    libsForQt5.qt5.qtgraphicaleffects
 
-      # CPU autofreq
-      # auto-cpufreq
+    # CPU autofreq
+    # auto-cpufreq
 
-      # patheon
-      # pantheon.appcenter
+    # patheon
+    # pantheon.appcenter
 
-    ]
-    ++ (with gnomeExtensions; [ gsconnect appindicator hide-top-bar dashbar ]);
+  ];
 
   programs.fish.enable = true;
 
@@ -157,7 +148,7 @@
   hardware.cpu.intel.updateMicrocode = true;
 
   # rename to ...graphics...
-  hardware.opengl.extraPackages = with pkgs; [
+  hardware.graphics.extraPackages = with pkgs; [
     vaapiIntel
     vaapiVdpau
     libvdpau-va-gl
