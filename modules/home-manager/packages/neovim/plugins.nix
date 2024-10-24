@@ -44,128 +44,70 @@ let
       # none ls
       null-ls-nvim
     ];
+
   customPackages = with pkgs.vimPlugins;
-    let openFile = path: "${builtins.readFile path}";
+    let
+      openFile = path: "${builtins.readFile path}";
+      lua = name: conf: {
+        plugin = name;
+        type = "lua";
+        config =
+          if builtins.typeOf conf == "string" then conf else openFile conf;
+      };
     in [
-      {
-        plugin = friendly-snippets;
-        type = "lua";
-        config = ''
-          require('luasnip.loaders.from_vscode').lazy_load()
-        '';
-      }
-      {
-        plugin = neoscroll-nvim;
-        type = "lua";
-        config = openFile ./config/plugins/smooth-scroll.lua;
-      }
-      {
-        plugin = gitsigns-nvim;
-        type = "lua";
-        config = openFile ./config/plugins/gitsigns.lua;
-      }
-      {
-        plugin = indent-blankline-nvim;
-        type = "lua";
-        config = openFile ./config/plugins/indent-blank.lua;
-      }
-      {
-        plugin = nvim-colorizer-lua;
-        type = "lua";
-        config = ''require("colorizer").setup()'';
-      }
-      {
-        plugin = onedark-nvim;
-        type = "lua";
-        config = openFile ./config/plugins/colorthemes.lua;
-      }
-      {
-        plugin = nvim-autopairs;
-        type = "lua";
-        config = openFile ./config/plugins/autopair.lua;
-      }
-      {
-        plugin = nvim-tree-lua;
-        type = "lua";
-        config = openFile ./config/plugins/nvim-tree.lua;
-      }
-      {
-        plugin = lualine-nvim;
-        type = "lua";
-        config = openFile ./config/plugins/lualine.lua;
-      }
-      {
-        plugin = comment-nvim;
-        type = "lua";
-        config = openFile ./config/plugins/comment.lua;
-      }
-      {
-        plugin = bufferline-nvim;
-        type = "lua";
-        config = openFile ./config/plugins/bufferline.lua;
-      }
-      {
-        plugin = (nvim-treesitter.withPlugins (p: [
-          p.tree-sitter-nix
-          p.tree-sitter-typescript
-          p.tree-sitter-javascript
-          p.tree-sitter-vim
-          p.tree-sitter-bash
-          p.tree-sitter-lua
-          p.tree-sitter-python
-          p.tree-sitter-json
-          p.tree-sitter-rescript
-          p.tree-sitter-prisma
-        ]));
-        type = "lua";
-        config = openFile ./config/plugins/treesitter.lua;
-      }
-      {
-        plugin = telescope-nvim;
-        type = "lua";
-        config = openFile ./config/plugins/telescope.lua;
-      }
-      {
-        plugin = alpha-nvim;
-        type = "lua";
-        config = openFile ./config/plugins/alpha.lua;
-      }
-      {
-        plugin = lazy-lsp-nvim;
-        type = "lua";
-        config = openFile ./config/plugins/lazy-lsp.lua;
-      }
-      # {
-      #   plugin = nvim-lspconfig;
-      #   type = "lua";
-      #   config = openFile ./config/plugins/lsp.lua;
-      # }
-      {
-        plugin = hover-nvim;
-        type = "lua";
-        config = openFile ./config/plugins/hover.lua;
-      }
-      {
-        plugin = nvim-cmp;
-        type = "lua";
-        config = openFile ./config/plugins/autocomplete.lua;
-      }
-      {
-        plugin = none-ls-nvim;
-        type = "lua";
-        config = openFile ./config/plugins/none-ls.lua;
-      }
-      {
-        plugin = codeium-nvim;
-        type = "lua";
-        config = openFile ./config/plugins/codeium.lua;
-      }
-      {
-        plugin = neogit;
-        type = "lua";
-        config = ''
-          local neogit = require('neogit')
-          neogit.setup {}'';
-      }
+      (lua catppuccin-nvim ./config/plugins/theme/catppuccin-nvim.lua)
+
+      (lua neoscroll-nvim ./config/plugins/smooth-scroll.lua)
+
+      (lua gitsigns-nvim ./config/plugins/gitsigns.lua)
+
+      (lua indent-blankline-nvim ./config/plugins/indent-blank.lua)
+
+      (lua nvim-autopairs ./config/plugins/autopair.lua)
+
+      (lua nvim-tree-lua ./config/plugins/nvim-tree.lua)
+
+      (lua lualine-nvim ./config/plugins/lualine.lua)
+
+      (lua comment-nvim ./config/plugins/comment.lua)
+
+      (lua bufferline-nvim ./config/plugins/bufferline.lua)
+
+      (lua (nvim-treesitter.withPlugins (p: [
+        p.tree-sitter-nix
+        p.tree-sitter-typescript
+        p.tree-sitter-javascript
+        p.tree-sitter-vim
+        p.tree-sitter-bash
+        p.tree-sitter-lua
+        p.tree-sitter-python
+        p.tree-sitter-json
+        p.tree-sitter-rescript
+        p.tree-sitter-prisma
+      ])) ./config/plugins/treesitter.lua)
+
+      (lua telescope-nvim ./config/plugins/telescope.lua)
+
+      (lua alpha-nvim ./config/plugins/alpha.lua)
+
+      (lua lazy-lsp-nvim ./config/plugins/lazy-lsp.lua)
+      #      (lua nvim-lspconfig ./config/plugins/lsp.lua)
+      (lua hover-nvim ./config/plugins/hover.lua)
+
+      (lua nvim-cmp ./config/plugins/autocomplete.lua)
+
+      (lua none-ls-nvim ./config/plugins/none-ls.lua)
+
+      (lua codeium-nvim ./config/plugins/codeium.lua)
+
+      (lua friendly-snippets ''
+        require('luasnip.loaders.from_vscode').lazy_load()
+      '')
+
+      (lua nvim-colorizer-lua ''require("colorizer").setup()'')
+
+      (lua neogit ''
+        local neogit = require('neogit')
+        neogit.setup {}'')
     ];
 in packaged ++ customPackages

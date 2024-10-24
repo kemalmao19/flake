@@ -19,19 +19,23 @@
   # EXTENSIONS
   environment.systemPackages = with pkgs;
     [
+      #tools
       gnome-tweaks
-      whitesur-icon-theme
-      apple-cursor
 
       # sddm dependecy
       libsForQt5.qt5.qtquickcontrols2
       libsForQt5.qt5.qtgraphicaleffects
+
+      #theme 
+      catppuccin-gtk
+      whitesur-icon-theme
+      apple-cursor
 
     ] ++ (with gnomeExtensions; [
       gsconnect
       appindicator
       hide-top-bar
       dashbar
-      blur-my-shell
+      gtile
     ]);
 }
