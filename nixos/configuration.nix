@@ -30,6 +30,11 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+  i18n.inputMethod = {
+    enable = true;
+    type = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [ mozc ];
+  };
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "id_ID.UTF-8";
@@ -97,10 +102,6 @@
     [
       # CPU autofreq
       # auto-cpufreq
-
-      # patheon
-      # pantheon.appcenter
-
     ];
 
   services.acpid.enable = true;

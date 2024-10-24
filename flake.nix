@@ -85,7 +85,7 @@
       # linux home manager 
       homeConfigurations.${user.name} = mkHomeConfig user.linux user.name;
 
-      # nixos | not tested, you can try or modif
+      # nixos 
       nixosConfigurations.kemalmao = mkNixosConfig;
     };
 }
