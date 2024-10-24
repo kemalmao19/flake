@@ -1,13 +1,9 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { pkgs, lib, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./ui.nix
+    ./ui/default.nix
   ];
 
   system.stateVersion = "24.05";
@@ -89,45 +85,23 @@
     description = "kemalmao";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.fish;
-    packages = with pkgs; [
-      firefox-esr
-      # chromium
-      # libreoffice-fresh
-      # dbeaver
-      xarchiver
-      #  thunderbird
-    ];
+    packages = with pkgs; [ firefox-esr xarchiver ];
   };
+  programs.fish.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   services.flatpak.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    whitesur-icon-theme
-    apple-cursor
+  environment.systemPackages = with pkgs;
+    [
+      # CPU autofreq
+      # auto-cpufreq
 
-    # conky
+      # patheon
+      # pantheon.appcenter
 
-    # sddm dependecy
-    libsForQt5.qt5.qtquickcontrols2
-    libsForQt5.qt5.qtgraphicaleffects
-
-    # CPU autofreq
-    # auto-cpufreq
-
-    # patheon
-    # pantheon.appcenter
-
-  ];
-
-  programs.fish.enable = true;
-
-  # systemd cpu
-  # systemd.packages = [ pkgs.auto-cpufreq ];
-  # systemd.services.auto-cpufreq.path = with pkgs; [ bash coreutils ];
+    ];
 
   services.acpid.enable = true;
   powerManagement.enable = true;
@@ -145,15 +119,16 @@
     #  };
     #};
   };
+
   hardware.cpu.intel.updateMicrocode = true;
 
-  # rename to ...graphics...
   hardware.graphics.extraPackages = with pkgs; [
     vaapiIntel
     vaapiVdpau
     libvdpau-va-gl
     intel-media-driver
   ];
+
   boot = {
     kernelModules = [ "applesmc" "i915" ];
     # https://forum.manjaro.org/t/kworker-kacpid-over-70-of-cpu-dual-boot-mac-manjaro/61981
@@ -188,6 +163,10 @@
 
   # CPU auto services
   # services.auto-cpufreq.enable = true;  
+
+  # systemd cpu
+  # systemd.packages = [ pkgs.auto-cpufreq ];
+  # systemd.services.auto-cpufreq.path = with pkgs; [ bash coreutils ];
 
   # Mariadb 
   # services.mysql = {
