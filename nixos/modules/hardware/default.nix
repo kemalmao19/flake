@@ -2,7 +2,7 @@
   services.acpid.enable = true;
 
   powerManagement.enable = true;
-  # powerManagement.cpuFreqGovernor = "schedutil";
+  powerManagement.cpuFreqGovernor = "schedutil";
 
   services.mbpfan = {
     enable = true;

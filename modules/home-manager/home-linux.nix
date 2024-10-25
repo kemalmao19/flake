@@ -11,6 +11,4 @@
   imports = [ ./packages.nix ];
 
   home.packages = with pkgs; [ ibus-engines.mozc ];
-
-  home.file.".config/gtk-3.0/".source = ./dotfiles/config/gtk-3.0;
 }
