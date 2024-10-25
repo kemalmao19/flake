@@ -52,11 +52,7 @@ let
     };
 
   in with pkgs.vimPlugins; [
-    {
-      plugin = catppuccin-nvim;
-      type = "lua";
-      config = builtins.readFile ./config/plugins/theme/catppuccin-nvim.lua;
-    }
+    (lua catppuccin-nvim ./config/plugins/theme/catppuccin-nvim.lua)
 
     (lua neoscroll-nvim ./config/plugins/neoscroll-nvim.lua)
 

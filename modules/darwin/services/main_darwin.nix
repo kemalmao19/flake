@@ -2,15 +2,15 @@
   # system.keyboard.enableKeyMapping = true;
   # system.keyboard.remapCapsLockToEscape = true;
   # fonts.fontDir.enable = true; # DANGER 2024 no longer need 
-  fonts.packages = [
-    (pkgs.nerdfonts.override {
-      fonts = [
-        "Meslo"
-        "FiraCode"
-        "Hack"
-      ];
-    })
-  ];
+  # fonts.packages = [
+  #   (pkgs.nerdfonts.override {
+  #     fonts = [
+  #       "Meslo"
+  #       "FiraCode"
+  #       "Hack"
+  #     ];
+  #   })
+  # ];
 
   services.nix-daemon.enable = true;
   system.defaults = {
