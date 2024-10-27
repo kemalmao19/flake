@@ -26,6 +26,10 @@ let
     which-key-nvim
     todo-comments-nvim
     vim-prisma
+    vim-surround
+    emmet-vim
+    vim-gitgutter
+    vim-multiple-cursors
 
     # cmp-nvim dep
     cmp-nvim-lsp
