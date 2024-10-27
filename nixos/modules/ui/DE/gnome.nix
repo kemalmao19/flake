@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   # Gnome
   services.xserver.desktopManager = { gnome.enable = true; };
-  programs.dconf.enable = true;
 
   #EXCULDE  
   environment.gnome.excludePackages = with pkgs; [
@@ -17,15 +16,6 @@
     [
       #tools
       gnome-tweaks
-
-      # sddm dependecy
-      libsForQt5.qt5.qtquickcontrols2
-      libsForQt5.qt5.qtgraphicaleffects
-
-      #theme 
-      catppuccin-gtk
-      whitesur-icon-theme
-      apple-cursor
 
     ] ++ (with gnomeExtensions; [
       gsconnect

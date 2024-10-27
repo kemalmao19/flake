@@ -21,6 +21,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   services.flatpak.enable = true;
+  xdg.portal.enable = true;
 
   environment.systemPackages = with pkgs;
     [

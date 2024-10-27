@@ -11,6 +11,8 @@
     fd
     eza
 
+    joplin-desktop
+
     ##formatter 
     nixfmt-classic
     stylua
