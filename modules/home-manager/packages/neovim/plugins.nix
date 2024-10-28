@@ -29,7 +29,7 @@ let
     vim-surround
     emmet-vim
     vim-gitgutter
-    vim-multiple-cursors
+    # vim-multiple-cursors
 
     # cmp-nvim dep
     cmp-nvim-lsp

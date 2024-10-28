@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" "Meslo" "Hack" ]; })
     trash-cli
     ranger
     neofetch
@@ -10,6 +10,7 @@
     ripgrep
     fd
     eza
+    xclip
 
     joplin-desktop
 

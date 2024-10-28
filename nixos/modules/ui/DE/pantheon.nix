@@ -33,7 +33,6 @@
     systemPackages = with pkgs; [
       pantheon-tweaks # tweaks for elementary OS
       appeditor # elementary OS menu editor
-      formatter # elementary OS filesystem formatter
       indicator-application-gtk3 # App Indicator
       pantheon.sideload # elementary OS Flatpak installer
       dconf-editor

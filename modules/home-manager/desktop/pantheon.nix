@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
   dconf.settings = {
     "io/elementary/desktop/wingpanel" = { use-transparency = true; };
 
@@ -24,9 +24,9 @@
     "net/launchpad/plank/docks/dock1" = {
       alignment = "center";
       hide-mode = "window-dodge";
-      icon-size = 32;
+      icon-size = 36;
       pinned-only = false;
-      position = "left";
+      position = "bottom";
       theme = "Transparent";
     };
 
@@ -44,4 +44,21 @@
       unsafe-paste-alert = false;
     };
   };
+
+  # dotfiles
+  home.file = {
+    "${config.xdg.configHome}/autostart/monitor-background.desktop".text = ''
+
+      [Desktop Entry]
+      Name=Monitor Indicators
+      Comment=Monitor Indicators
+      Type=Application
+      Exec=com.github.stsdc.monitor --start-in-background
+      Icon=com.github.stsdc.monitor
+      Categories=
+      Terminal=false
+      NoDisplay=true
+      StartupNotify=false'';
+  };
+
 }
