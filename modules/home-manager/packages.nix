@@ -36,18 +36,20 @@
   ];
 
   imports = [
-    #./packages/vscode
+
     ./packages/starship
     ./packages/starship/starship-symbol.nix
-    # ./packages/helix.nix
-    # ./packages/zsh.nix
-    # ./packages/alacritty.nix
     ./packages/fish.nix
     ./packages/tmux.nix
     ./packages/fzf.nix
     ./packages/zoxide.nix
     ./packages/git.nix
-    ./packages/neovim
+    # ./packages/neovim
+
+    #./packages/vscode
+    # ./packages/helix.nix
+    # ./packages/zsh.nix
+    # ./packages/alacritty.nix
   ];
   # dotfiles
   home.file.".inputrc".source = ./dotfiles/inputrc;

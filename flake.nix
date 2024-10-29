@@ -18,6 +18,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # tree-sitter-rescript
     ts-rescript = {
       url = "github:nkrkv/tree-sitter-rescript";
@@ -25,7 +30,7 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, darwin, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, darwin, nixvim, ... }:
     let
       # Define user 
       user = {
@@ -51,6 +56,8 @@
                 home.username = username;
                 home.homeDirectory = "/home/${username}";
               }
+
+              nixvim.homeManagerModules.nixvim
             ];
           }
         else

@@ -1,0 +1,3 @@
+{
+    imports = [./nvim-tree.nix];
+}

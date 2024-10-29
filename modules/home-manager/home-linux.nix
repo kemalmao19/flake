@@ -8,7 +8,7 @@
 
   #nixpkgs.overlays = [ ../../overlays/default.nix ];
 
-  imports = [ ./packages.nix ./desktop/pantheon.nix ];
+  imports = [ ./packages.nix ./desktop/pantheon.nix ./nixvim ];
 
   home.packages = with pkgs; [ ibus-engines.mozc ];
 
