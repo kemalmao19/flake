@@ -44,7 +44,11 @@
     ./packages/fzf.nix
     ./packages/zoxide.nix
     ./packages/git.nix
+
+    ## neovim 
     # ./packages/neovim
+    ## nixvim 
+    ./nixvim
 
     #./packages/vscode
     # ./packages/helix.nix

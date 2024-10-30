@@ -66,8 +66,10 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
-              users.${username}.imports =
-                [ ./modules/home-manager/home-darwin.nix ];
+              users.${username}.imports = [
+                ./modules/home-manager/home-darwin.nix
+                nixvim.nixDarwinModules.nixvim
+              ];
             };
             users.users.${username}.home = "/Users/${username}";
           };

@@ -15,11 +15,13 @@
           "yaml"
         ];
       };
-      indent = { char = "│"; };
+      indent = { char = "▏"; };
       scope = {
         show_end = false;
         show_exact_scope = true;
         show_start = false;
+        injected_languages = true;
+        include = {
         node_type = {
           "*" = [
             "class"
@@ -43,6 +45,7 @@
             "import_statement"
             "operation_type"
           ];
+        };
         };
       };
     };
