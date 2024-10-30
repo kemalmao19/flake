@@ -19,6 +19,9 @@
         styles = {
           booleans = [ "bold" "italic" ];
           conditionals = [ "bold" ];
+          comments = [ "italic" ];
+          functions = [ "italic" ];
+          strings = [ "bold" ];
         };
         term_colors = true;
       };

@@ -1,4 +1,10 @@
-{
+{ pkgs, ... }: {
+  extraPlugins = with pkgs.vimPlugins; [
+    telescope-fzf-native-nvim
+    telescope-ui-select-nvim
+    plenary-nvim
+  ];
+
   plugins.telescope = {
     # [[ Configure Telescope ]]
     # See `:help telescope` and `:help telescope.setup()`
