@@ -11,6 +11,9 @@ nix home manager for any kind linux distribution
 ### Nixos 
 my NixOS configuration for old MacBook Pro
 
+### nixvim
+`nix run github:kemalmao19/flake#nixvim`
+
 
 # How to use my flake
 
