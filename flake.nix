@@ -1,12 +1,13 @@
 {
-  description = "Kemalmao minimal flake for Darwin";
+  description =
+    "Kemalmao nix environment: NixOS, Home Manager, Darwin and Nixvim";
   inputs = {
-    # called derivations that say how to build software.
+    # nix derivations
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixpkgs-unstable"; # unstable channel
     };
 
-    # Manages configs links things into your home directory
+    # home manager
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,7 +48,7 @@
 
       # Define Func for Home Manager configuration
       mkHomeConfig = system: username:
-        if system == "x86_64-linux" || "aarch64-linux" || "i686-linux" then
+        if system != "x86_64-darwin" || "aarch64-darwin" then
           home-manager.lib.homeManagerConfiguration {
             pkgs = pkgs system;
             modules = [

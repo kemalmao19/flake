@@ -2,10 +2,10 @@
   imports = [
     ./ui
     ./lsp
+    ./ai
     ./whichkey.nix
     ./hover.nix
     ./comment.nix
-    ./codeium.nix
     ./autopairs.nix
     ./neoscroll.nix
   ];

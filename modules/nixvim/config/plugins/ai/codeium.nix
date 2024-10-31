@@ -14,4 +14,13 @@
       '';
     };
   };
+  plugins.cmp.settings.sources = [
+    # { name = "codeium"; } 
+  ];
+  plugins.which-key.settings.spec = [{
+    __unkeyed-1 = "<leader>cc";
+    __unkeyed-2 = "<cmd>:Codeium Chat<cr>";
+    desc = "AI Chat";
+  }];
+
 }

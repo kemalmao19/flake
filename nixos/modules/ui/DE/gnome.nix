@@ -8,6 +8,7 @@
     gnome-tour
     gnome-contacts
     gnome-initial-setup
+    gnome-music
     geary
   ];
 
@@ -16,6 +17,7 @@
     [
       #tools
       gnome-tweaks
+      rhythmbox
 
     ] ++ (with gnomeExtensions; [ gsconnect appindicator hide-top-bar ]);
 
