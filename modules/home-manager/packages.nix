@@ -48,7 +48,7 @@
     ## neovim 
     # ./packages/neovim
     ## nixvim 
-    ./nixvim
+    ../nixvim
 
     #./packages/vscode
     # ./packages/helix.nix

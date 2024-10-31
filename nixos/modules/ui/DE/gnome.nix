@@ -17,12 +17,6 @@
       #tools
       gnome-tweaks
 
-    ] ++ (with gnomeExtensions; [
-      gsconnect
-      appindicator
-      hide-top-bar
-      dashbar
-      gtile
-    ]);
+    ] ++ (with gnomeExtensions; [ gsconnect appindicator hide-top-bar ]);
 
 }

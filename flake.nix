@@ -87,6 +87,18 @@
           pkgs = pkgs system;
           modules = [ ./modules/darwin (mkHomeConfig system username) ];
         };
+
+      # Define Func for Nixvim Standalone
+      mkNixvim = system:
+        let nixvim' = nixvim.legacyPackages.${system};
+        in nixvim'.makeNixvimWithModule {
+          pkgs = pkgs system;
+          module = ./modules/nixvim/config.nix;
+          # You can use `extraSpecialArgs` to pass additional arguments to your module files
+          extraSpecialArgs = {
+            # inherit (inputs) foo;
+          };
+        };
     in {
       # darwin & darwin home manager
       darwinConfigurations.${user.name} = mkDarwinConfig user.darwin user.name;
@@ -95,6 +107,9 @@
       homeConfigurations.${user.name} = mkHomeConfig user.linux user.name;
 
       # nixos 
-      nixosConfigurations.kemalmao = mkNixosConfig;
+      nixosConfigurations.${user.name} = mkNixosConfig;
+
+      # standalone nixvim 
+      nixvim = mkNixvim user.linux;
     };
 }

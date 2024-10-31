@@ -6,7 +6,13 @@
   };
 
   # DM
-  imports = [ ./DE/pantheon.nix ];
+  imports = [
+    # Pantheon 
+    # ./DE/pantheon.nix
+
+    # Gnome
+    ./DE/gnome.nix
+  ];
 
   programs.dconf.enable = true;
 

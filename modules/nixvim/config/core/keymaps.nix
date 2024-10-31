@@ -1,5 +1,5 @@
 {
-  programs.nixvim.keymaps = [
+  keymaps = [
     {
       mode = "n";
       key = "<Space>";
@@ -296,13 +296,11 @@
         silent = true;
       };
     }
-{
-          mode = "n";
-          key = "<leader>n";
-          action = "<cmd>:NvimTreeToggle<CR>";
-          options = {
-            desc = "NTree Toggle";
-          };
+    {
+      mode = "n";
+      key = "<leader>n";
+      action = "<cmd>:NvimTreeToggle<CR>";
+      options = { desc = "NTree Toggle"; };
     }
   ];
 }

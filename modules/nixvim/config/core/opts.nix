@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  programs.nixvim.opts = {
+  opts = {
     #  See `:help 'clipboard'`
     clipboard = {
       providers = {
