@@ -106,10 +106,10 @@
       # darwin & darwin home manager
       darwinConfigurations.${user.name} = mkDarwinConfig user.darwin user.name;
 
-      # linux home manager 
+      # standalone linux home manager 
       homeConfigurations.${user.name} = mkHomeConfig user.linux user.name;
 
-      # nixos 
+      # nixos + home manager
       nixosConfigurations.${user.name} = mkNixosConfig;
 
       # standalone nixvim 

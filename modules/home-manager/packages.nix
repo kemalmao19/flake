@@ -39,6 +39,7 @@
 
   imports = [
 
+    ./packages/alacritty
     ./packages/starship
     ./packages/starship/starship-symbol.nix
     ./packages/fish.nix
@@ -55,7 +56,6 @@
     #./packages/vscode
     # ./packages/helix.nix
     # ./packages/zsh.nix
-    # ./packages/alacritty.nix
   ];
   # dotfiles
   home.file.".inputrc".source = ./dotfiles/inputrc;
