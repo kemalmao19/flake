@@ -35,7 +35,6 @@
       appeditor # elementary OS menu editor
       indicator-application-gtk3 # App Indicator
       pantheon.sideload # elementary OS Flatpak installer
-      dconf-editor
     ];
   };
 

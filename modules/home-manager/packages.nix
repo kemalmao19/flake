@@ -11,8 +11,10 @@
     fd
     eza
     xclip
+    tree
 
     joplin-desktop
+    # flameshot
 
     ##formatter 
     nixfmt-classic

@@ -19,11 +19,18 @@
 
   hardware.cpu.intel.updateMicrocode = true;
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    intel-vaapi-driver =
+      pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+  };
+
   hardware.graphics.extraPackages = with pkgs; [
-    vaapiIntel
+    # vaapiIntel
     vaapiVdpau
     libvdpau-va-gl
     intel-media-driver
+    intel-media-sdk
+    intel-vaapi-driver
   ];
 
   services.xserver.deviceSection = lib.mkDefault ''

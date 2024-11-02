@@ -12,7 +12,9 @@ nix home manager for any kind linux distribution
 my NixOS configuration for old MacBook Pro
 
 ### nixvim
-`nix run github:kemalmao19/flake#nixvim`
+```bash 
+nix run github:kemalmao19/flake#nixvim
+```
 
 
 # How to use my flake
@@ -23,13 +25,13 @@ my NixOS configuration for old MacBook Pro
 
 Easy install with determinate systems:
 
-```console
+```bash
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
 - Clone [this repository](https://github.com/kemalmao19/flake)
 
-```console
+```bash
 // with SSH
 
 git clone git@github.com:kemalmao19/flake
@@ -41,7 +43,7 @@ git clone https://github.com/kemalmao19/flake
 
 - Change directory to `flake`
 
-```console
+```bash
 cd flake
 ```
 
@@ -52,7 +54,7 @@ cd flake
   Available for `[NAME]`:
   - `kemalmao`
 
-```console
+```bash
 nix build .#darwinConfigurations.kemalmao.system
 ```
 
@@ -62,7 +64,7 @@ nix build .#darwinConfigurations.kemalmao.system
   - `kemalmao`  
     After `Run Build` you can apply from `darwin-rebuild switch --flake .#kemalmao` with this command
 
-```console
+```bash
 darwin-rebuild switch --flake .#kemalmao
 ```
 
@@ -75,13 +77,13 @@ darwin-rebuild switch --flake .#kemalmao
   Available for `[NAME]`:
   - `kemalmao`
 
-```console
+```bash
 nix build .#homeConfigurations.kemalmao.activationPackage
 ```
 
 - Apply Build result
   command for apply the result: `./result/activate`  
-```console
+```bash
 ./result/activate
 ```
 
@@ -91,6 +93,6 @@ nix build .#homeConfigurations.kemalmao.activationPackage
 ## Nixos 
 You can try 
 
-```console
+```bash
 sudo nixos-rebuild switch --flake .#kemalmao
 ```

@@ -19,6 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # nixified vim
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +32,8 @@
     };
   };
 
+  # TODO: for each system configuration. 
+
   outputs = inputs@{ nixpkgs, home-manager, darwin, nixvim, ... }:
     let
       # Define user 
@@ -39,6 +42,7 @@
         linux = "x86_64-linux";
         darwin = "x86_64-darwin";
       };
+
       # Define pkgs 
       pkgs = system:
         import nixpkgs {
@@ -52,7 +56,7 @@
           home-manager.lib.homeManagerConfiguration {
             pkgs = pkgs system;
             modules = [
-              ./modules/home-manager/home-linux.nix
+              ./modules/home-manager
               {
                 home.username = username;
                 home.homeDirectory = "/home/${username}";
@@ -67,10 +71,8 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
-              users.${username}.imports = [
-                ./modules/home-manager/home-darwin.nix
-                nixvim.nixDarwinModules.nixvim
-              ];
+              users.${username}.imports =
+                [ ./modules/home-manager nixvim.nixDarwinModules.nixvim ];
             };
             users.users.${username}.home = "/Users/${username}";
           };
@@ -111,6 +113,6 @@
       nixosConfigurations.${user.name} = mkNixosConfig;
 
       # standalone nixvim 
-      nixvim = mkNixvim user.linux;
+      nixvim = mkNixvim;
     };
 }

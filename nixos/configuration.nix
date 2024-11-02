@@ -23,11 +23,11 @@
   services.flatpak.enable = true;
   xdg.portal.enable = true;
 
-  environment.systemPackages = with pkgs;
-    [
-      xarchiver
-      # CPU autofreq
-      # auto-cpufreq
-    ];
+  environment.systemPackages = with pkgs; [
+    appimage-run
+    xarchiver
+    # CPU autofreq
+    # auto-cpufreq
+  ];
 
 }

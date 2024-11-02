@@ -18,5 +18,6 @@
     vim-surround
     emmet-vim
     vim-gitgutter
+    markview-nvim
   ];
 }
