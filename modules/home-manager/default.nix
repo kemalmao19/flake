@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+
+  # nixpkgs.overlays = [ ../../overlays/default.nix ];
   home.stateVersion = "24.05";
   home.sessionVariables = {
     PAGER = "less";
@@ -9,10 +11,6 @@
   };
 
   programs.home-manager.enable = true;
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
-
-  # nixpkgs.overlays = [ ../../overlays/default.nix ];
 
   imports = [ ./packages.nix ./desktop/pantheon.nix ];
 

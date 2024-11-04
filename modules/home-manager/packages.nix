@@ -1,7 +1,11 @@
 { pkgs, ... }: {
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "Meslo" "Hack" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" "CascadiaCode" ]; })
     trash-cli
     ranger
     neofetch
@@ -15,6 +19,9 @@
 
     joplin-desktop
     # flameshot
+
+    #multiplexer
+    zellij
 
     ##formatter 
     nixfmt-classic
@@ -39,7 +46,7 @@
 
   imports = [
 
-    ./packages/alacritty
+    # ./packages/alacritty
     ./packages/starship
     ./packages/starship/starship-symbol.nix
     ./packages/fish.nix
@@ -61,4 +68,5 @@
   home.file.".inputrc".source = ./dotfiles/inputrc;
   home.file.".config/kitty/".source = ./dotfiles/config/kitty;
   home.file.".config/neofetch/".source = ./dotfiles/config/neofetch;
+  home.file.".config/zellij/".source = ./dotfiles/config/zellij;
 }

@@ -18,7 +18,15 @@
       #tools
       gnome-tweaks
       rhythmbox
+      ulauncher
 
-    ] ++ (with gnomeExtensions; [ gsconnect appindicator hide-top-bar ]);
+    ] ++ (with gnomeExtensions; [
+      pop-shell
+      gsconnect
+      appindicator
+      hide-top-bar
+      dash-to-panel
+      space-bar
+    ]);
 
 }

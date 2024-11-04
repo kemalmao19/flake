@@ -25,5 +25,11 @@
       v = "nvim";
       ls = "eza";
     };
+    shellInit = ''
+      if status is-interactive
+          eval (zellij setup --generate-auto-start fish | string collect)
+      end
+
+    '';
   };
 }

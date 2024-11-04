@@ -4,6 +4,7 @@
   powerManagement.enable = true;
   powerManagement.cpuFreqGovernor = "schedutil";
 
+  # services.tlp.enable = true;
   services.mbpfan = {
     enable = true;
     #settings = {
@@ -16,8 +17,6 @@
     #  };
     #};
   };
-
-  hardware.cpu.intel.updateMicrocode = true;
 
   nixpkgs.config.packageOverrides = pkgs: {
     intel-vaapi-driver =
@@ -37,6 +36,8 @@
     Option "TearFree" "true"
   '';
 
+  hardware.facetimehd.enable = true;
+
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -45,18 +46,5 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
-
-  # CPU auto services
-  # services.auto-cpufreq.enable = true;  
-
-  # systemd cpu
-  # systemd.packages = [ pkgs.auto-cpufreq ];
-  # systemd.services.auto-cpufreq.path = with pkgs; [ bash coreutils ];
 }

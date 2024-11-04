@@ -4,7 +4,7 @@
     settings = {
       font = {
         normal.family = "FiraCode Nerd Font Mono";
-        size = 11;
+        size = 10;
       };
       window = {
         dimensions = {
@@ -13,7 +13,7 @@
         };
         padding = {
           x = 10;
-          y = 10;
+          y = 0;
         };
         startup_mode = "windowed";
       };
