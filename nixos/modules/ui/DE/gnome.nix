@@ -18,7 +18,7 @@
       #tools
       gnome-tweaks
       rhythmbox
-      ulauncher
+      pop-launcher
 
     ] ++ (with gnomeExtensions; [
       pop-shell
