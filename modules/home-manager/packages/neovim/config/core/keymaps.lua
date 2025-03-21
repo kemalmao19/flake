@@ -75,8 +75,7 @@ vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- Nvimtree
-vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', opts)
-
+vim.keymap.set('n', '<leader>n', ':NvimTreeToggle<CR>', opts)
 
 vim.keymap.set('n', '<leader>', ':WhichKey<CR>')
 vim.keymap.set('n', '<leader>f', ':Telescope<CR>')

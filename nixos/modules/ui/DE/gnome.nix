@@ -25,8 +25,12 @@
       gsconnect
       appindicator
       hide-top-bar
-      dash-to-panel
       space-bar
+      emoji-copy
     ]);
 
+  xdg.portal.extraPortals = with pkgs; [
+    xdg-desktop-portal-gnome
+    xdg-desktop-portal-gtk
+  ];
 }

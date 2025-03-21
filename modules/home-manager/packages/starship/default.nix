@@ -11,4 +11,5 @@
       };
     };
   };
+  imports = [ ./starship-symbol.nix ];
 }

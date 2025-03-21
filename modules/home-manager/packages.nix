@@ -48,7 +48,6 @@
 
     # ./packages/alacritty
     ./packages/starship
-    ./packages/starship/starship-symbol.nix
     ./packages/fish.nix
     ./packages/tmux.nix
     ./packages/fzf.nix
@@ -56,9 +55,9 @@
     ./packages/git.nix
 
     ## neovim 
-    # ./packages/neovim
+    ./packages/neovim
     ## nixvim 
-    ../nixvim
+    # ../nixvim
 
     #./packages/vscode
     # ./packages/helix.nix
