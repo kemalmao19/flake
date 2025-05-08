@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   # SDDM
   services.displayManager = {
-    sddm.enable = true;
+    sddm.enable = false;
     sddm.theme = "${import ./sddm-theme.nix { inherit pkgs; }}";
   };
 
@@ -17,13 +17,12 @@
   programs.dconf.enable = true;
 
   environment.systemPackages = with pkgs; [
-    catppuccin-gtk
+    whitesur-gtk-theme
     whitesur-icon-theme
-    la-capitaine-icon-theme
-    apple-cursor
+    whitesur-cursors
 
-    # sddm dependecy
-    libsForQt5.qt5.qtquickcontrols2
-    libsForQt5.qt5.qtgraphicaleffects
+    # sddm custom dependecy
+    # libsForQt5.qt5.qtquickcontrols2
+    # libsForQt5.qt5.qtgraphicaleffects
   ];
 }

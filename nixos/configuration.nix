@@ -3,7 +3,9 @@
 {
   imports = [ ./hardware-configuration.nix ./modules ];
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
+
+  programs.fish.enable = true;
 
   # flake
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -15,11 +17,7 @@
     xkb.variant = "";
   };
 
-  # shell
-  programs.fish.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  # flatpak 
   services.flatpak.enable = true;
   xdg.portal = {
     enable = true;
@@ -29,9 +27,15 @@
     #xdgOpenUsePortal = true;
   };
 
-  environment.systemPackages = with pkgs; [ appimage-run xarchiver ];
+  # eenvironment packages
+  environment.systemPackages = with pkgs; [
+    appimage-run
+    xarchiver
+    lm_sensors
+    hello-unfree
+  ];
 
-  # Perform garbage collection weekly to maintain low disk usage
+  # Perform garbage collection weekly to maintain low di/home/kemalmao/.config/fish/config.fish' is in the way of '/nix/store/3yj4yan0lsqsv40zlvgnmp3k9zjzlwkw-home-manager-files/.config/fish/config.fishsk usage
   nix.gc = {
     automatic = true;
     dates = "weekly";

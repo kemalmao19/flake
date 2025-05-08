@@ -5,8 +5,8 @@
   powerManagement.cpuFreqGovernor = "schedutil";
 
   # services.tlp.enable = true;
-  services.mbpfan = {
-    enable = true;
+  # services.mbpfan = {
+    # enable = true;
     #settings = {
     #  general = {
     #    min_fan1_speed = 2000;
@@ -16,12 +16,12 @@
     #    max_temp = 87;
     #  };
     #};
-  };
+  # };
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver =
-      pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
-  };
+  # nixpkgs.config.packageOverrides = pkgs: {
+    # intel-vaapi-driver =
+      # pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+  # };
 
   hardware.graphics.extraPackages = with pkgs; [
     # vaapiIntel

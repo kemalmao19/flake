@@ -86,6 +86,10 @@ nix build .#homeConfigurations.kemalmao.activationPackage
 ```bash
 ./result/activate
 ```
+next u can use this for updating config 
+```bash
+home-manager switch --flake .
+```
 
 
 - Done

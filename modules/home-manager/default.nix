@@ -3,7 +3,7 @@
 {
 
   # nixpkgs.overlays = [ ../../overlays/default.nix ];
-  home.stateVersion = "24.05";
+  home.stateVersion = "24.11";
   home.sessionVariables = {
     PAGER = "less";
     CLICLOLOR = 1;

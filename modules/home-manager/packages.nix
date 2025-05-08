@@ -17,7 +17,7 @@
     xclip
     tree
 
-    joplin-desktop
+    # joplin-desktop
     # flameshot
 
     #multiplexer

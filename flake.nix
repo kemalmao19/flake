@@ -78,10 +78,12 @@
           };
 
       # Define Func for NixOS configuration
-      mkNixosConfig = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./nixos/configuration.nix ];
-      };
+      mkNixosConfig = system:
+        nixpkgs.lib.nixosSystem {
+          pkgs = pkgs system;
+          specialArgs = { inherit inputs; };
+          modules = [ ./nixos/configuration.nix ];
+        };
 
       # Define Func for Darwin configuration
       mkDarwinConfig = system: username:
@@ -110,7 +112,7 @@
       homeConfigurations.${user.name} = mkHomeConfig user.linux user.name;
 
       # nixos + home manager
-      nixosConfigurations.${user.name} = mkNixosConfig;
+      nixosConfigurations.${user.name} = mkNixosConfig user.linux;
 
       # standalone nixvim 
       nixvim = mkNixvim;

@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   # Gnome
-  services.xserver.desktopManager = { gnome.enable = true; };
+  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
 
   #EXCULDE  
   environment.gnome.excludePackages = with pkgs; [
@@ -21,6 +22,7 @@
       pop-launcher
 
     ] ++ (with gnomeExtensions; [
+      blur-my-shell
       pop-shell
       gsconnect
       appindicator
