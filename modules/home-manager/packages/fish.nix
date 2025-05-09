@@ -25,6 +25,9 @@
       v = "nvim";
       ls = "eza";
     };
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+    '';
     shellInit = ''
       if status is-interactive
           eval (zellij setup --generate-auto-start fish | string collect)

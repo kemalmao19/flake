@@ -46,6 +46,9 @@ let
 
     # none ls
     null-ls-nvim
+
+    # latex
+    # vimtex
   ];
 
   customPackages = let
@@ -56,6 +59,10 @@ let
     };
 
   in with pkgs.vimPlugins; [
+    (lua vimtex ''
+      vim.g.vimtex_view_method = "zathura"
+      vim.g.vimtex_compiler_method = "latexrun"
+    '')
     (lua catppuccin-nvim ./config/plugins/theme/catppuccin-nvim.lua)
 
     (lua neoscroll-nvim ./config/plugins/neoscroll-nvim.lua)

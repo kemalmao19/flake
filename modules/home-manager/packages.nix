@@ -16,6 +16,12 @@
     eza
     xclip
     tree
+    cava
+
+    # pdf & tex
+    zathura
+    latexrun
+    texliveBasic
 
     # joplin-desktop
     # flameshot
