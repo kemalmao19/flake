@@ -27,7 +27,7 @@
       gsconnect
       appindicator
       hide-top-bar
-      space-bar
+      freon
       emoji-copy
     ]);
 

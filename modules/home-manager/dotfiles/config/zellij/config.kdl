@@ -1,2 +1,10 @@
-theme "catppuccin-frappe"
+theme "catppuccin-mocha"
 default_layout "compact"
+pane_frames false
+ui {
+    pane_frames {
+        hide_session_name true
+    }
+}
+on_force_close "quit"
+

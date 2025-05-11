@@ -5,10 +5,13 @@
   };
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "CascadiaCode" ]; })
+    (nerdfonts.override {
+      fonts = [ "FiraCode" "CascadiaCode" "JetBrainsMono" ];
+    })
     trash-cli
     ranger
     neofetch
+    fastfetch
     bottom
     bat
     ripgrep
@@ -21,10 +24,7 @@
     # pdf & tex
     zathura
     latexrun
-    texliveBasic
-
-    # joplin-desktop
-    # flameshot
+    # texliveBasic
 
     #multiplexer
     zellij
@@ -62,16 +62,25 @@
 
     ## neovim 
     ./packages/neovim
-    ## nixvim 
     # ../nixvim
 
     #./packages/vscode
     # ./packages/helix.nix
     # ./packages/zsh.nix
+    ./packages/texlive.nix
   ];
   # dotfiles
   home.file.".inputrc".source = ./dotfiles/inputrc;
   home.file.".config/kitty/".source = ./dotfiles/config/kitty;
-  home.file.".config/neofetch/".source = ./dotfiles/config/neofetch;
+  home.file.".conJetBrainsMonofig/neofetch/".source =
+    ./dotfiles/config/neofetch;
+  home.file.".config/fastfetch/".source = ./dotfiles/config/fastfetch;
   home.file.".config/zellij/".source = ./dotfiles/config/zellij;
+
+  # hyprland 
+  home.file.".config/hypr/".source = ./dotfiles/config/hyprland/hypr;
+  home.file.".config/waybar/".source = ./dotfiles/config/hyprland/waybar;
+  home.file.".config/rofi/".source = ./dotfiles/config/hyprland/rofi;
+  home.file.".icons/hypr-dots-peach/".source =
+    ./dotfiles/config/cursor/hypr-dots-peach;
 }

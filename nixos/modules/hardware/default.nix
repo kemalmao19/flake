@@ -5,22 +5,22 @@
   powerManagement.cpuFreqGovernor = "schedutil";
 
   # services.tlp.enable = true;
-  # services.mbpfan = {
-    # enable = true;
-    #settings = {
-    #  general = {
-    #    min_fan1_speed = 2000;
-    #    max_fan1_speed = 6200;
-    #    high_temp = 61;
-    #    low_temp = 55;
-    #    max_temp = 87;
-    #  };
-    #};
-  # };
+  services.mbpfan = {
+    enable = true;
+    settings = {
+      general = {
+        min_fan1_speed = 2000;
+        max_fan1_speed = 6200;
+        high_temp = 60;
+        low_temp = 50;
+        max_temp = 70;
+      };
+    };
+  };
 
   # nixpkgs.config.packageOverrides = pkgs: {
-    # intel-vaapi-driver =
-      # pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+  # intel-vaapi-driver =
+  # pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
   # };
 
   hardware.graphics.extraPackages = with pkgs; [
@@ -46,5 +46,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    jack.enable = true;
   };
 }

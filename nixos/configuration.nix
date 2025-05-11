@@ -22,6 +22,7 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     # https://github.com/emersion/xdg-desktop-portal-wlr/issues/42
     # Breaks `xdg-open` by causing the same behaviour as opening links from Flatpak
     #xdgOpenUsePortal = true;

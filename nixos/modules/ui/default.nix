@@ -12,6 +12,9 @@
 
     # Gnome
     ./DE/gnome.nix
+
+    # Hyprland
+    ./WM/hypr
   ];
 
   programs.dconf.enable = true;
