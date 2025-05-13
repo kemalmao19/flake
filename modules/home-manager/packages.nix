@@ -3,15 +3,34 @@
     enable = true;
     nix-direnv.enable = true;
   };
+
   fonts.fontconfig.enable = true;
+
+  gtk = {
+    enable = true;
+    # cursorTheme.name = "macOS-Monterey-White";
+    # cursorTheme.package = pkgs.apple-cursor;
+    iconTheme.name = "Papirus-Dark";
+    iconTheme.package = pkgs.catppuccin-papirus-folders;
+    theme.name = "Catppuccin-Mocha-Standard-Peach-dark";
+    theme.package = pkgs.catppuccin-gtk.override {
+      accents = [ "peach" ];
+      size = "standard";
+      variant = "mocha";
+    };
+  };
+
   home.packages = with pkgs; [
     (nerdfonts.override {
       fonts = [ "FiraCode" "CascadiaCode" "JetBrainsMono" ];
     })
     trash-cli
     ranger
+    ueberzugpp
     neofetch
     fastfetch
+    imagemagick
+    w3m
     bottom
     bat
     ripgrep
@@ -76,6 +95,7 @@
     ./dotfiles/config/neofetch;
   home.file.".config/fastfetch/".source = ./dotfiles/config/fastfetch;
   home.file.".config/zellij/".source = ./dotfiles/config/zellij;
+  home.file.".config/zathura/".source = ./dotfiles/config/zathura;
 
   # hyprland 
   home.file.".config/hypr/".source = ./dotfiles/config/hyprland/hypr;
@@ -83,4 +103,5 @@
   home.file.".config/rofi/".source = ./dotfiles/config/hyprland/rofi;
   home.file.".icons/hypr-dots-peach/".source =
     ./dotfiles/config/cursor/hypr-dots-peach;
+  home.file.".config/swaync/".source = ./dotfiles/config/hyprland/swaync;
 }

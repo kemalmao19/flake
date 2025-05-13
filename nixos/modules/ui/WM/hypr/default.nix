@@ -9,11 +9,11 @@
 
     # Bar
     waybar
-    # pkgs.eww
 
-    # notif
-    dunst
+    # notification
+    # dunst
     libnotify
+    swaynotificationcenter # css styling
 
     # wallpaper 
     swww
@@ -33,11 +33,17 @@
     wl-clipboard # xclip alternative
     hyprshot # ss using mouse
 
-    # theme
-    catppuccin-papirus-folders
-
     # lock
     hyprlock
+
+    # polkit
+    hyprpolkitagent
+
+    # idle
+    hypridle
+
+    # gtk look
+    nwg-look
   ];
 
   # Optional, hint Electron apps to use Wayland:

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# the bar
+waybar &
+
 # initializing wallpaper daemon
 swww-daemon &
 # setting wallpaper
@@ -8,8 +11,9 @@ swww img ~/.config/hypr/wallpaper.jpg &
 #network manager applet
 nm-applet --indicator & 
 
-# the bar
-waybar &
+# idle 
+hypridle &
 
+# notification
 # dunst
-dunst
+swaync
