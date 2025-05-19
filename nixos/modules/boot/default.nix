@@ -1,4 +1,4 @@
-{ config, ... }: { # Bootloader.
+{ config, pkgs, ... }: { # Bootloader.
   boot.loader.systemd-boot.enable = true;
 
   boot.loader.efi.canTouchEfiVariables = true;
@@ -16,5 +16,5 @@
   boot.blacklistedKernelModules = [ "b43" "bcma" ];
 
   # Kernel
-  #boot.kernelPackages = pkgs.linuxPackages_6_12;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 }

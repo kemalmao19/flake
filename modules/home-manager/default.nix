@@ -3,6 +3,7 @@
 {
 
   # nixpkgs.overlays = [ ../../overlays/default.nix ];
+  programs.home-manager.enable = true;
   home.stateVersion = "24.11";
   home.sessionVariables = {
     PAGER = "less";
@@ -10,9 +11,7 @@
     EDITOR = "nvim";
   };
 
-  programs.home-manager.enable = true;
-
-  imports = [ ./packages.nix ./desktop/pantheon.nix ];
+  imports = [ ./packages.nix ./desktop ./dotfiles ];
 
   home.packages = with pkgs; [ ibus-engines.mozc ];
 

@@ -23,6 +23,7 @@
     whitesur-gtk-theme
     whitesur-icon-theme
     whitesur-cursors
+    catppuccin-cursors.mochaPeach
 
     # sddm custom dependecy
     # libsForQt5.qt5.qtquickcontrols2

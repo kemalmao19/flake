@@ -2,7 +2,7 @@
   "files.autoSave" = "off";
   "editor.tabSize" = 2;
   "editor.formatOnSave" = true;
-  "workbench.colorTheme" = "Atomize";
+  "workbench.colorTheme" = "Catppuccin Mocha";
   "editor.fontFamily" = "FiraCode Nerd Font, Monaco, 'Courier New', monospace";
   "editor.fontLigatures" = true;
   "editor.minimap.enabled" = false;
@@ -23,7 +23,7 @@
   "codeium.enableConfig" = { "*" = true; };
   "editor.defaultFormatter" = "esbenp.prettier-vscode";
   "workbench.startupEditor" = "none";
-  "[rescript]" = { "editor.defaultFormatter" = "chenglou92.rescript-vscode"; };
+  # "[rescript]" = { "editor.defaultFormatter" = "chenglou92.rescript-vscode"; };
 
   "workbench.layoutControl.enabled" = false;
   "explorer.openEditors.visible" = 1;

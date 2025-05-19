@@ -14,22 +14,11 @@
   ];
 
   # EXTENSIONS
-  environment.systemPackages = with pkgs;
-    [
-      #tools
-      gnome-tweaks
-      rhythmbox
-      pop-launcher
-
-    ] ++ (with gnomeExtensions; [
-      blur-my-shell
-      pop-shell
-      gsconnect
-      appindicator
-      hide-top-bar
-      freon
-      emoji-copy
-    ]);
+  environment.systemPackages = with pkgs; [
+    #tools
+    rhythmbox
+    kooha
+  ];
 
   xdg.portal.extraPortals = with pkgs; [
     xdg-desktop-portal-gnome

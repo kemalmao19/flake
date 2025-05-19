@@ -32,6 +32,8 @@
     intel-vaapi-driver
   ];
 
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "i965"; };
+
   services.xserver.deviceSection = lib.mkDefault ''
     Option "TearFree" "true"
   '';
@@ -48,4 +50,9 @@
     pulse.enable = true;
     jack.enable = true;
   };
+
+  # Disabling wakeup triggers for all PCIe devices
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="pci", DRIVER=="pcieport", ATTR{power/wakeup}="disabled"
+  '';
 }

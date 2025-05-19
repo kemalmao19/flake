@@ -37,6 +37,7 @@
   ];
 
   # Perform garbage collection weekly to maintain low di/home/kemalmao/.config/fish/config.fish' is in the way of '/nix/store/3yj4yan0lsqsv40zlvgnmp3k9zjzlwkw-home-manager-files/.config/fish/config.fishsk usage
+  nix.settings.auto-optimise-store = true;
   nix.gc = {
     automatic = true;
     dates = "weekly";
