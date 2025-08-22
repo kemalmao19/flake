@@ -1,4 +1,18 @@
-theme "catppuccin-mocha"
+themes {
+   default {
+    bg "#585b70" // Surface2
+    fg "#cdd6f4" // Text
+    red "#f38ba8"
+    green "#fab387" // peach
+    blue "#89b4fa"
+    yellow "#f9e2af"
+    magenta "#f5c2e7" // Pink
+    orange "#fab387" // Peach
+    cyan "#89dceb" // Sky
+    black "#181825" // Mantle
+    white "#cdd6f4" // Text
+    }
+}
 default_layout "compact"
 pane_frames false
 ui {
@@ -7,4 +21,5 @@ ui {
     }
 }
 on_force_close "quit"
+show_startup_tips false
 

@@ -7,13 +7,14 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = [ "FiraCode" "CascadiaCode" "JetBrainsMono" ];
-    })
+    nerd-fonts.fira-code
+    nerd-fonts.fira-mono
+    nerd-fonts.caskaydia-mono
+    nerd-fonts.caskaydia-cove
+    nerd-fonts.jetbrains-mono
     trash-cli
     ranger
     ueberzugpp
-    # neofetch
     fastfetch
     imagemagick
     w3m
@@ -22,14 +23,12 @@
     ripgrep
     fd
     eza
-    xclip
+    # xclip
     tree
     cava
 
     # pdf & tex
     zathura
-    latexrun
-    # texliveBasic
 
     #multiplexer
     zellij
@@ -45,12 +44,24 @@
 
     #node
     nodejs_20
-    nodePackages."typescript"
-    nodePackages."typescript-language-server"
+    vscode-langservers-extracted
+    # nodePackages."typescript"
+    # nodePackages."typescript-language-server"
     # nodePackages."@rescript/language-server"
 
+    # download manager
+    gabutdm
+
+    # academic
     google-chrome
     zotero
+
+    # productiviy
+    gnome-solanum
+    blanket
+
+    # noteTaking 
+    notesnook
 
   ];
 
@@ -65,13 +76,16 @@
     ./packages/git.nix
 
     ## neovim 
-    ./packages/neovim
-    # ../nixvim
+    # ./packages/neovim
+    ../nixvim
 
     ./packages/vscode
     # ./packages/helix.nix
     # ./packages/zsh.nix
     # ./packages/texlive.nix
+
+    ## caelestia 
+    ./packages/caelestia
   ];
 
 }

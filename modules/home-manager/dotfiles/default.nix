@@ -1,9 +1,7 @@
 {
   # dotfiles
-
   home.file.".inputrc".source = ./inputrc;
   home.file.".config/kitty/".source = ./config/kitty;
-  home.file.".config/neofetch/".source = ./config/neofetch;
   home.file.".config/fastfetch/".source = ./config/fastfetch;
   home.file.".config/zellij/".source = ./config/zellij;
   home.file.".config/zathura/".source = ./config/zathura;

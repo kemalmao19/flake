@@ -1,6 +1,6 @@
 * {
     width: 600;
-    font: "JetBrainsMono Nerd Font 14";
+    font: "Caskaydia Nerd Font 14";
 }
 @import                          "./colors.rasi"
 element-text, element-icon, mode-switcher {

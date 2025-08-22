@@ -12,7 +12,7 @@
       variant = "mocha";
     };
 
-    font.name = "JetBrainsMono Nerd Font";
+    font.name = "Caskaydia Nerd Font";
     font.size = 10;
 
     gtk3.extraConfig = {

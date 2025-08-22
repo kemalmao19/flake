@@ -3,16 +3,16 @@
     #  See `:help 'clipboard'`
     clipboard = {
       providers = {
-        xclip = {
+        wl-copy = {
           enable = true;
-          package = pkgs.xclip;
+          package = pkgs.wl-clipboard;
         };
       };
 
       # Sync clipboard between OS and Neovim
       register = "unnamedplus";
     };
-    guifont = "FiraCode Nerd Font:h12";
+    guifont = "JetBrainsMono Nerd Font:h12";
     linespace = 3;
     number = true; # Make line numbers default (default: false)
     relativenumber = true; # Set relative numbered lines (default: false)

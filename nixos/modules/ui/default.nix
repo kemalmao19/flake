@@ -19,14 +19,12 @@
 
   programs.dconf.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    whitesur-gtk-theme
-    whitesur-icon-theme
-    whitesur-cursors
-    catppuccin-cursors.mochaPeach
+  environment.systemPackages = with pkgs;
+    [
+      catppuccin-cursors.mochaPeach
 
-    # sddm custom dependecy
-    # libsForQt5.qt5.qtquickcontrols2
-    # libsForQt5.qt5.qtgraphicaleffects
-  ];
+      # sddm custom dependecy
+      # libsForQt5.qt5.qtquickcontrols2
+      # libsForQt5.qt5.qtgraphicaleffects
+    ];
 }

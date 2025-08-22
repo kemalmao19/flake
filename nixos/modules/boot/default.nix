@@ -16,5 +16,6 @@
   boot.blacklistedKernelModules = [ "b43" "bcma" ];
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod;
 }

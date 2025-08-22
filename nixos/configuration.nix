@@ -33,7 +33,8 @@
     appimage-run
     xarchiver
     lm_sensors
-    hello-unfree
+    gparted
+    # hello-unfree #check for unfree apps
   ];
 
   # Perform garbage collection weekly to maintain low di/home/kemalmao/.config/fish/config.fish' is in the way of '/nix/store/3yj4yan0lsqsv40zlvgnmp3k9zjzlwkw-home-manager-files/.config/fish/config.fishsk usage
@@ -41,6 +42,6 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 2w";
+    options = "--delete-older-than 7d";
   };
 }

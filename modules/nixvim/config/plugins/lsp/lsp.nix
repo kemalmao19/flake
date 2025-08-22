@@ -10,8 +10,22 @@
   plugins.lsp = {
     enable = true;
     servers = {
-      ts_ls.enable = true;
       nixd.enable = true;
+
+      ts_ls.enable = true;
+      ts_ls.cmd = [ "typescript-language-server" "--stdio" ];
+      ts_ls.filetypes = [
+        "javascript"
+        "javascriptreact"
+        "javascript.jsx"
+        "typescript"
+        "typescriptreact"
+        "typescript.tsx"
+      ];
+
+      jsonls.enable = true;
+      jsonls.cmd = [ "vscode-json-language-server" "--stdio" ];
+      jsonls.filetypes = [ "json" "jsonc" ];
     };
     keymaps = {
       # Diagnostic keymaps

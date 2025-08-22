@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
 # the bar
-waybar &
-
+caelestia-shell -d &
+# waybar &
 # initializing wallpaper daemon
-swww-daemon &
+# swww-daemon &
 # setting wallpaper
-swww img ~/.config/hypr/wallpaper.jpg &
+# swww img ~/.config/hypr/wallpaper.jpg &
 
 #network manager applet
-nm-applet --indicator & 
+# nm-applet --indicator & 
 
 # idle 
 hypridle &

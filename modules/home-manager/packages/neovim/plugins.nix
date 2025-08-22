@@ -99,7 +99,8 @@ let
     (lua alpha-nvim ./config/plugins/alpha-nvim.lua)
 
     (lua lazy-lsp-nvim ./config/plugins/lazy-lsp-nvim.lua)
-    # (lua nvim-lspconfig)
+    # (lua nvim-lspconfig ./config/plugins/nvim-lspconfig.lua)
+
     (lua hover-nvim ./config/plugins/hover-nvim.lua)
 
     (lua nvim-cmp ./config/plugins/nvim-cmp.lua)

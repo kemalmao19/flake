@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   # Gnome
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
 
   #EXCULDE  
   environment.gnome.excludePackages = with pkgs; [
@@ -14,11 +14,11 @@
   ];
 
   # EXTENSIONS
-  environment.systemPackages = with pkgs; [
-    #tools
-    rhythmbox
-    kooha
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      #tools
+      rhythmbox
+    ];
 
   xdg.portal.extraPortals = with pkgs; [
     xdg-desktop-portal-gnome

@@ -28,7 +28,7 @@
     vaapiVdpau
     libvdpau-va-gl
     intel-media-driver
-    intel-media-sdk
+    # intel-media-sdk
     intel-vaapi-driver
   ];
 
@@ -41,7 +41,7 @@
   hardware.facetimehd.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

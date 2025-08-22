@@ -24,11 +24,16 @@
         "caffeine@patapon.info"
         "FuzzyClock@fire-man-x"
         "freon@UshakovVasilii_Github.yahoo.com"
+        "user-theme@gnome-shell-extensions.gcampax.github.com"
       ];
+    };
+    "org/gnome/shell/extensions/user-theme" = {
+      name = "catppuccin-mocha-peach-standard";
     };
     "org/gnome/desktop/background" = {
       picture-uri = "file:///home/kemalmao/.config/hypr/wallpaper.jpg";
       picture-uri-dark = "file:///home/kemalmao/.config/hypr/wallpaper.jpg";
     };
+    "org/gnome/desktop/applications/terminal" = { exec = "kitty"; };
   };
 }

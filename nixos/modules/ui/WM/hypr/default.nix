@@ -12,7 +12,8 @@
 
     # notification
     # dunst
-    libnotify
+    # libnotify
+    inotify-tools
     swaynotificationcenter # css styling
 
     # wallpaper 
@@ -30,8 +31,10 @@
     # screenshot
     grim # ss utility
     slurp # select utility
-    wl-clipboard # xclip alternative
     hyprshot # ss using mouse
+
+    wl-clipboard # wayland clipboard
+    cliphist
 
     # lock
     hyprlock

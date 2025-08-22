@@ -30,11 +30,18 @@
       url = "github:nkrkv/tree-sitter-rescript";
       flake = false;
     };
+
+    #caelestia-dots
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # TODO: for each system configuration. 
 
-  outputs = inputs@{ nixpkgs, home-manager, darwin, nixvim, ... }:
+  outputs =
+    inputs@{ nixpkgs, home-manager, darwin, nixvim, caelestia-shell, ... }:
     let
       # Define user 
       user = {
@@ -47,7 +54,11 @@
       pkgs = system:
         import nixpkgs {
           inherit system;
-          config = { allowUnfree = true; };
+          config = {
+            allowUnfree = true;
+            permittedInsecurePackages =
+              [ "broadcom-sta-6.30.223.271-57-6.12.42" ];
+          };
         };
 
       # Define Func for Home Manager configuration
@@ -62,7 +73,7 @@
                 home.homeDirectory = "/home/${username}";
               }
 
-              nixvim.homeManagerModules.nixvim
+              nixvim.homeModules.nixvim
             ];
           }
         else
@@ -88,7 +99,15 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.${username} = import ./modules/home-manager;
+              # home-manager.extraSpecialArgs = { inherit ; };
+              home-manager.users.${username} = {
+                imports = [
+                  ./modules/home-manager
+
+                  nixvim.homeModules.nixvim
+                  caelestia-shell.homeManagerModules.default
+                ];
+              };
             }
           ];
         };

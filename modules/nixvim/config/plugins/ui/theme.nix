@@ -5,7 +5,7 @@
       settings = {
         transparent_background = true;
         disable_underline = true;
-        flavour = "frappe";
+        flavour = "mocha";
         integrations = {
           bufferline = true;
           cmp = true;
