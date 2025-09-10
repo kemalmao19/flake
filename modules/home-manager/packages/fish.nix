@@ -24,15 +24,20 @@
       tm = "tmux";
       v = "nvim";
       ls = "eza";
+      y = "yazi";
+      nswitch = "sudo nixos-rebuild switch --flake ~/flake/.#kemalmao";
+      nboot = "sudo nixos-rebuild boot --flake ~/flake/.#kemalmao";
     };
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
     '';
     shellInit = ''
-      if status is-interactive
-                eval (zellij setup --generate-auto-start fish | string collect)
-            end
+      # zellij initialization
+      # if status is-interactive
+      #           eval (zellij setup --generate-auto-start fish | string collect)
+      #       end
 
+      # caelestia
       if status is-interactive
           # Starship custom prompt
           starship init fish | source
@@ -46,6 +51,15 @@
           end
       end
 
+      # yazi wrapper
+      function y
+      	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+      	yazi $argv --cwd-file="$tmp"
+      	if read -z cwd < "$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+      		builtin cd -- "$cwd"
+      	end
+       	rm -f -- "$tmp"
+      end
     '';
   };
 }

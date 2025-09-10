@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-
-# the bar
-caelestia-shell -d &
+caelestia-shell -d & 
+#the bar
 # waybar &
 # initializing wallpaper daemon
 # swww-daemon &
@@ -16,4 +15,4 @@ hypridle &
 
 # notification
 # dunst
-swaync
+# swaync

@@ -12,7 +12,8 @@
       # Sync clipboard between OS and Neovim
       register = "unnamedplus";
     };
-    guifont = "JetBrainsMono Nerd Font:h12";
+    guifont =
+      "FiraCode Nerd Font:h8"; # The font used in graphical neovim applications
     linespace = 3;
     number = true; # Make line numbers default (default: false)
     relativenumber = true; # Set relative numbered lines (default: false)

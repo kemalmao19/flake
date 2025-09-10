@@ -59,7 +59,7 @@
   "window.autoDetectHighContrast" = false;
   "zenMode.fullScreen" = false;
   "editor.fontSize" = 12;
-  "editor.fontWeight" = "350";
+  "editor.fontWeight" = "normal";
   "editor.lineHeight" = 24;
   "window.density.editorTabHeight" = "compact";
 

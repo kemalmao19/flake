@@ -12,9 +12,8 @@
 
     # notification
     # dunst
-    # libnotify
-    inotify-tools
-    swaynotificationcenter # css styling
+    libnotify
+    # swaynotificationcenter # css styling
 
     # wallpaper 
     swww

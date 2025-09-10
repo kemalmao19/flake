@@ -7,13 +7,17 @@
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    # fonts 
     nerd-fonts.fira-code
     nerd-fonts.fira-mono
     nerd-fonts.caskaydia-mono
     nerd-fonts.caskaydia-cove
     nerd-fonts.jetbrains-mono
+    corefonts
+    vista-fonts
+
+    #cli
     trash-cli
-    ranger
     ueberzugpp
     fastfetch
     imagemagick
@@ -23,7 +27,7 @@
     ripgrep
     fd
     eza
-    # xclip
+    xclip
     tree
     cava
 
@@ -44,6 +48,7 @@
 
     #node
     nodejs_20
+    # pnpm
     vscode-langservers-extracted
     # nodePackages."typescript"
     # nodePackages."typescript-language-server"
@@ -67,25 +72,26 @@
 
   imports = [
 
-    # ./packages/alacritty
-    ./packages/starship
-    ./packages/fish.nix
-    ./packages/tmux.nix
-    ./packages/fzf.nix
-    ./packages/zoxide.nix
-    ./packages/git.nix
+    # ./alacritty
+    ./yazi.nix
+    ./fish.nix
+    ./tmux.nix
+    ./fzf.nix
+    ./zoxide.nix
+    ./git.nix
+
+    ./starship
 
     ## neovim 
-    # ./packages/neovim
-    ../nixvim
+    # ./neovim
+    ../../nixvim
 
-    ./packages/vscode
-    # ./packages/helix.nix
-    # ./packages/zsh.nix
-    # ./packages/texlive.nix
+    ./vscode
+    # ./helix.nix
+    # ./zsh.nix
 
     ## caelestia 
-    ./packages/caelestia
+    ./caelestia
   ];
 
 }

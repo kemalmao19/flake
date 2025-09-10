@@ -15,6 +15,9 @@
 
     # Hyprland
     ./WM/hypr
+
+    # i3
+    # ./WM/i3
   ];
 
   programs.dconf.enable = true;

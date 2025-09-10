@@ -36,6 +36,7 @@
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   # TODO: for each system configuration. 

@@ -13,7 +13,7 @@ themes {
     white "#cdd6f4" // Text
     }
 }
-default_layout "compact"
+// default_layout "compact"
 pane_frames false
 ui {
     pane_frames {

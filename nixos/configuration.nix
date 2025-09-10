@@ -34,6 +34,7 @@
     xarchiver
     lm_sensors
     gparted
+    wshowkeys
     # hello-unfree #check for unfree apps
   ];
 
@@ -44,4 +45,12 @@
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
+
+  services.udisks2.enable = true;
+
+  # virtualisation.docker = {
+  #   enable = true;
+  #   # Set up resource limits
+  #   daemon.settings = { experimental = true; };
+  # };
 }
