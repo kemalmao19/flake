@@ -1,15 +1,16 @@
 { pkgs, lib, ... }: {
   services.acpid.enable = true;
 
+  # https://www.kernel.org/doc/Documentation/cpu-freq/governors.txt
   powerManagement.enable = true;
-  powerManagement.cpuFreqGovernor = "schedutil";
+  powerManagement.cpuFreqGovernor = "powersave"; #schedutil powersave ondemand
 
   # services.tlp.enable = true;
 
   #intel cpu throttle
   # services.thermald.enable = true;
 
-  # macbook fan control
+  # macbook fan control 
   services.mbpfan = {
     enable = true;
     settings = {

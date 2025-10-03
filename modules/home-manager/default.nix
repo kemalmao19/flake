@@ -11,7 +11,11 @@
     EDITOR = "nvim";
   };
 
-  imports = [ ./packages ./desktop ./dotfiles ];
+  imports = [ 
+    ./packages 
+    # ./desktop 
+    # ./dotfiles 
+  ];
 
   home.packages = with pkgs; [ ibus-engines.mozc ];
 

@@ -3,7 +3,7 @@
   users.users.kemalmao = {
     isNormalUser = true;
     description = "kemalmao";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "input" ];
     shell = pkgs.fish;
     packages = with pkgs; [ firefox-esr ];
   };

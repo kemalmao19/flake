@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   # SDDM
   services.displayManager = {
-    sddm.enable = false;
+    sddm.enable = true;
     sddm.theme = "${import ./sddm-theme.nix { inherit pkgs; }}";
   };
 
@@ -11,10 +11,13 @@
     # ./DE/pantheon.nix
 
     # Gnome
-    ./DE/gnome.nix
+    #./DE/gnome.nix
+
+   # xfce
+  ./DE/xfce.nix
 
     # Hyprland
-    ./WM/hypr
+    #./WM/hypr
 
     # i3
     # ./WM/i3
@@ -24,10 +27,12 @@
 
   environment.systemPackages = with pkgs;
     [
-      catppuccin-cursors.mochaPeach
+      #catppuccin-cursors.mochaPeach
+      papirus-icon-theme
+      bibata-cursors
 
       # sddm custom dependecy
-      # libsForQt5.qt5.qtquickcontrols2
-      # libsForQt5.qt5.qtgraphicaleffects
+      libsForQt5.qt5.qtquickcontrols2
+      libsForQt5.qt5.qtgraphicaleffects
     ];
 }

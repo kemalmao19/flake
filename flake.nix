@@ -56,7 +56,7 @@
         import nixpkgs {
           inherit system;
           config = {
-            allowUnfree = true;
+           allowUnfree = true;
             permittedInsecurePackages =
               [ "broadcom-sta-6.30.223.271-57-6.12.42" ];
           };
@@ -96,8 +96,8 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./nixos/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
+             home-manager.nixosModules.home-manager
+             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               # home-manager.extraSpecialArgs = { inherit ; };
@@ -105,8 +105,8 @@
                 imports = [
                   ./modules/home-manager
 
-                  nixvim.homeModules.nixvim
-                  caelestia-shell.homeManagerModules.default
+                  #nixvim.homeModules.nixvim
+                  #caelestia-shell.homeManagerModules.default
                 ];
               };
             }
@@ -143,6 +143,6 @@
       nixosConfigurations.${user.name} = mkNixosConfig user.linux user.name;
 
       # standalone nixvim 
-      nixvim = mkNixvim;
+      nixvim = mkNixvim ;
     };
 }

@@ -30,10 +30,11 @@
 
   # eenvironment packages
   environment.systemPackages = with pkgs; [
+    brightnessctl
     appimage-run
     xarchiver
     lm_sensors
-    gparted
+    #gparted
     wshowkeys
     # hello-unfree #check for unfree apps
   ];

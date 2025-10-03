@@ -30,18 +30,19 @@
     xclip
     tree
     cava
-
+    stow
+    neovim
     # pdf & tex
-    zathura
+    # zathura
 
     #multiplexer
-    zellij
+    # zellij
 
     ##formatter 
     nixfmt-classic
     stylua
-    biome
-    black
+    # biome
+    # black
 
     #lsp
     nixd
@@ -55,26 +56,25 @@
     # nodePackages."@rescript/language-server"
 
     # download manager
-    gabutdm
+    # gabutdm
 
     # academic
-    google-chrome
-    zotero
+    # google-chrome
+    # zotero
 
     # productiviy
-    gnome-solanum
-    blanket
+    # gnome-solanum
+    # blanket
 
     # noteTaking 
-    notesnook
-
+    # notesnook
   ];
 
   imports = [
 
     # ./alacritty
     ./yazi.nix
-    ./fish.nix
+    #./fish.nix
     ./tmux.nix
     ./fzf.nix
     ./zoxide.nix
@@ -84,14 +84,14 @@
 
     ## neovim 
     # ./neovim
-    ../../nixvim
+    # ../../nixvim
 
-    ./vscode
+    # ./vscode
     # ./helix.nix
     # ./zsh.nix
 
     ## caelestia 
-    ./caelestia
+    # ./caelestia
   ];
 
 }
