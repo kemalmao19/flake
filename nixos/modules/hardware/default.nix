@@ -3,7 +3,7 @@
 
   # https://www.kernel.org/doc/Documentation/cpu-freq/governors.txt
   powerManagement.enable = true;
-  powerManagement.cpuFreqGovernor = "powersave"; #schedutil powersave ondemand
+  powerManagement.cpuFreqGovernor = "schedutil"; # schedutil powersave ondemand
 
   # services.tlp.enable = true;
 
@@ -17,16 +17,16 @@
       general = {
         min_fan1_speed = 2000;
         max_fan1_speed = 6200;
-        low_temp = 55;
-        high_temp = 65;
-        max_temp = 75;
+        low_temp = 50;
+        high_temp = 60;
+        max_temp = 70;
       };
     };
   };
 
-  hardware.graphics.extraPackages = with pkgs; [
+   hardware.graphics.extraPackages = with pkgs; [
     # vaapiIntel
-    vaapiVdpau
+    libva-vdpau-driver
     libvdpau-va-gl
     intel-vaapi-driver
   ];
@@ -50,13 +50,10 @@
     pulse.enable = true;
     jack.enable = true;
   };
-
-  # Kernel quirk for Cirrus Logic audio chip in MacBookPro 2012
-  boot.kernelParams = [
-    "snd_hda_intel.model=mbp101" # try mbp55 or mbp101 depending on exact model
-    # "snd_hda_intel.probe_mask=1"
-  ];
+  services.pulseaudio.enable = false;
 
   hardware.graphics.enable32Bit = true;
-
+  boot.extraModprobeConfig = ''
+    options snd-hda-intel model=mbp101
+  '';
 }

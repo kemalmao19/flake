@@ -14,7 +14,7 @@ shutdown=''
 reboot=''
 lock=''
 suspend='󰒲'
-    background: #fab387;
+background= #fab387;
 logout='󰗽'
 yes=''
 no=''
@@ -90,15 +90,18 @@ case ${chosen} in
     $lock)
 		run_cmd
 		hyprlock
+    betterlockscreen
 		i3lock
         ;;
     $suspend)
 		run_cmd --suspend
 		hyprlock
+    betterlockscreen
 		i3lock
         ;;
     $logout)
 		run_cmd --logout
 		hyprctl dispatch exit
+    betterlockscreen
         ;;
 esac

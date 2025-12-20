@@ -1,7 +1,7 @@
-{ config, pkgs, ... }: { 
+{ config, pkgs, ... }: {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 5;
+  boot.loader.systemd-boot.configurationLimit = 3;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
 
@@ -24,6 +24,7 @@
       # System Responsiveness
       "sched_autogroup_enabled=1"
       "nowatchdog"
+      "snd_hda_intel.model=mbp101"
     ];
   };
 
@@ -31,11 +32,12 @@
   boot.blacklistedKernelModules = [ "b43" "bcma" ];
 
   # Kernel
-  boot.kernelPackages = pkgs.linuxPackages_xanmod;
+  # boot.kernelPackages = pkgs.linuxPackages_xanmod;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  services.logind.lidSwitch = "suspend-then-hibernate";
-  services.logind.extraConfig = ''
-    HandleLidSwitch=suspend-then-hibernate
-    HibernateDelaySec=30min
-  '';
+  services.logind.settings.Login = {
+    HandleLidSwitch="suspend-then-hibernate";
+    HibernateDelaySec="30min";
+  };
+
 }

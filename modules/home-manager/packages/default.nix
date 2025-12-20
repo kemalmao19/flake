@@ -8,13 +8,15 @@
 
   home.packages = with pkgs; [
     # fonts 
-    nerd-fonts.fira-code
-    nerd-fonts.fira-mono
+    # nerd-fonts.fira-code
+    # nerd-fonts.fira-mono
     nerd-fonts.caskaydia-mono
     nerd-fonts.caskaydia-cove
-    nerd-fonts.jetbrains-mono
-    corefonts
-    vista-fonts
+    # nerd-fonts.jetbrains-mono
+    # nerd-fonts.iosevka
+    font-awesome
+    # corefonts
+    # vista-fonts
 
     #cli
     trash-cli
@@ -32,8 +34,13 @@
     cava
     stow
     neovim
-    # pdf & tex
-    # zathura
+    zip
+    unzip
+    gcc
+    gnumake
+
+    # terminal 
+    alacritty
 
     #multiplexer
     # zellij
@@ -48,23 +55,17 @@
     nixd
 
     #node
-    nodejs_20
+    # nodejs_20
     # pnpm
-    vscode-langservers-extracted
+    # vscode-langservers-extracted
     # nodePackages."typescript"
     # nodePackages."typescript-language-server"
     # nodePackages."@rescript/language-server"
 
-    # download manager
-    # gabutdm
-
-    # academic
-    # google-chrome
-    # zotero
-
     # productiviy
     # gnome-solanum
     # blanket
+    calcure
 
     # noteTaking 
     # notesnook
@@ -92,6 +93,8 @@
 
     ## caelestia 
     # ./caelestia
+
+    # ./latex.nix
   ];
 
 }

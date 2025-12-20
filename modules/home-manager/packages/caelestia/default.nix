@@ -12,7 +12,7 @@
       };
       bar.status.showAudio = true;
       bar.workspaces.shown = 3;
-      general.apps.terminal = [ "kitty" ];
+      general.apps.terminal = [ "alacritty" ];
       launcher.maxShown = 6;
       launcher.showOnHover = true;
       paths.wallpaperDir = "~/Pictures/wallpaper";

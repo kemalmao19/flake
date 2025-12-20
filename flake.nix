@@ -1,6 +1,6 @@
 {
   description =
-    "Kemalmao nix environment: NixOS, Home Manager, Darwin and Nixvim";
+    "Kemalmao nix environment: NixOS, Home Manager, Darwin";
   inputs = {
     # nix derivations
     nixpkgs = {
@@ -19,22 +19,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nixified vim
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # tree-sitter-rescript
     ts-rescript = {
       url = "github:nkrkv/tree-sitter-rescript";
       flake = false;
-    };
-
-    #caelestia-dots
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
@@ -42,7 +30,7 @@
   # TODO: for each system configuration. 
 
   outputs =
-    inputs@{ nixpkgs, home-manager, darwin, nixvim, caelestia-shell, ... }:
+    inputs@{ nixpkgs, home-manager, darwin, ... }:
     let
       # Define user 
       user = {
@@ -58,7 +46,7 @@
           config = {
            allowUnfree = true;
             permittedInsecurePackages =
-              [ "broadcom-sta-6.30.223.271-57-6.12.42" ];
+              [ "broadcom-sta-6.30.223.271-59-6.18.1"];
           };
         };
 
@@ -74,7 +62,6 @@
                 home.homeDirectory = "/home/${username}";
               }
 
-              nixvim.homeModules.nixvim
             ];
           }
         else
@@ -84,7 +71,8 @@
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs; };
               users.${username}.imports =
-                [ ./modules/home-manager nixvim.nixDarwinModules.nixvim ];
+                [ 
+                ./modules/home-manager];
             };
             users.users.${username}.home = "/Users/${username}";
           };
@@ -104,9 +92,6 @@
               home-manager.users.${username} = {
                 imports = [
                   ./modules/home-manager
-
-                  #nixvim.homeModules.nixvim
-                  #caelestia-shell.homeManagerModules.default
                 ];
               };
             }
@@ -121,17 +106,6 @@
           modules = [ ./modules/darwin (mkHomeConfig system username) ];
         };
 
-      # Define Func for Nixvim Standalone
-      mkNixvim = system:
-        let nixvim' = nixvim.legacyPackages.${system};
-        in nixvim'.makeNixvimWithModule {
-          pkgs = pkgs system;
-          module = ./modules/nixvim/config.nix;
-          # You can use `extraSpecialArgs` to pass additional arguments to your module files
-          extraSpecialArgs = {
-            # inherit (inputs) foo;
-          };
-        };
     in {
       # darwin & darwin home manager
       darwinConfigurations.${user.name} = mkDarwinConfig user.darwin user.name;
@@ -141,8 +115,5 @@
 
       # nixos + home manager
       nixosConfigurations.${user.name} = mkNixosConfig user.linux user.name;
-
-      # standalone nixvim 
-      nixvim = mkNixvim ;
     };
 }
