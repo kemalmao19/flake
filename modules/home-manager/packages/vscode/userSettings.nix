@@ -3,7 +3,7 @@
   "editor.tabSize" = 2;
   "editor.formatOnSave" = true;
   "workbench.colorTheme" = "Catppuccin Mocha";
-  "editor.fontFamily" = "FiraCode Nerd Font, Monaco, 'Courier New', monospace";
+  "editor.fontFamily" = "CaskaydiaCove Nerd Font, Monaco, 'Courier New', monospace";
   "editor.fontLigatures" = true;
   "editor.minimap.enabled" = false;
   "search.exclude" = {

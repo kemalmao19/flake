@@ -5,7 +5,7 @@ let
     emroussel.atomize-atom-one-dark-theme
     esbenp.prettier-vscode
     formulahendry.auto-close-tag
-    chenglou92.rescript-vscode
+    # chenglou92.rescript-vscode
     prisma.prisma
   ];
   marketplaceExtension = pkgs.vscode-utils.extensionsFromVscodeMarketplace [{

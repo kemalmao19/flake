@@ -38,9 +38,11 @@
     unzip
     gcc
     gnumake
+    fish
 
     # terminal 
-    alacritty
+    # alacritty
+    (pkgs.callPackage ./alacritty { })
 
     #multiplexer
     # zellij
@@ -54,21 +56,23 @@
     #lsp
     nixd
 
-    #node
-    # nodejs_20
-    # pnpm
-    # vscode-langservers-extracted
-    # nodePackages."typescript"
-    # nodePackages."typescript-language-server"
-    # nodePackages."@rescript/language-server"
-
-    # productiviy
-    # gnome-solanum
-    # blanket
-    calcure
+    localsend
+    sent
+    # discord
+    todo
+    gearlever
 
     # noteTaking 
-    # notesnook
+    obsidian
+
+    # gimp
+    # inkscape
+    zotero
+    memento
+    anki
+
+    # dev 
+    nodejs_22
   ];
 
   imports = [
@@ -83,11 +87,13 @@
 
     ./starship
 
+    ./xmonad.nix
+
     ## neovim 
     # ./neovim
     # ../../nixvim
 
-    # ./vscode
+    ./vscode
     # ./helix.nix
     # ./zsh.nix
 
