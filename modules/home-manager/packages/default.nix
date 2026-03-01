@@ -24,7 +24,7 @@
     fastfetch
     imagemagick
     w3m
-    bottom
+    htop
     bat
     ripgrep
     fd
@@ -36,8 +36,8 @@
     neovim
     zip
     unzip
-    gcc
-    gnumake
+    #gcc
+    #gnumake
     fish
 
     # terminal 
@@ -56,20 +56,20 @@
     #lsp
     nixd
 
-    localsend
+    # localsend
     sent
     # discord
     todo
-    gearlever
+    #  gearlever
 
     # noteTaking 
-    obsidian
+    # obsidian
 
     # gimp
     # inkscape
-    zotero
-    memento
-    anki
+    #    zotero
+    #    memento
+    #    anki
 
     # dev 
     nodejs_22
@@ -85,15 +85,14 @@
     ./zoxide.nix
     ./git.nix
 
-    ./starship
-
+    ./starship 
     ./xmonad.nix
 
     ## neovim 
     # ./neovim
     # ../../nixvim
 
-    ./vscode
+    #./vscode
     # ./helix.nix
     # ./zsh.nix
 
