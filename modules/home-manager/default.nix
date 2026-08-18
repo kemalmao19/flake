@@ -11,6 +11,14 @@
     EDITOR = "nvim";
   };
 
+  targets.genericLinux.enable = true;
+  
+  # Setup hardware acceleration
+  home.sessionVariables = {
+    LD_LIBRARY_PATH = "${pkgs.libglvnd}/lib:${pkgs.mesa.drivers}/lib:${pkgs.libdrm}/lib";
+    LIBVA_DRIVERS_PATH = "${pkgs.libva}/lib/dri";
+  };
+
   imports = [ 
     ./packages 
     # ./desktop 

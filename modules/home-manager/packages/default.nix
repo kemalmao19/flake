@@ -15,8 +15,8 @@
     # nerd-fonts.jetbrains-mono
     # nerd-fonts.iosevka
     font-awesome
-    # corefonts
-    # vista-fonts
+    corefonts
+    vista-fonts
 
     #cli
     trash-cli
@@ -40,36 +40,36 @@
     #gnumake
     fish
 
-    # terminal 
+    ## terminal 
     # alacritty
     (pkgs.callPackage ./alacritty { })
 
-    #multiplexer
+    ## multiplexer
     # zellij
 
-    ##formatter 
+    ## formatter 
     nixfmt-classic
     stylua
     # biome
     # black
 
-    #lsp
+    ## lsp
     nixd
 
-    # localsend
+    ## productivity
     sent
     # discord
     todo
-    #  gearlever
-
     # noteTaking 
     # obsidian
 
+    ## graphics
     # gimp
     # inkscape
-    #    zotero
-    #    memento
-    #    anki
+
+    ## office
+    zotero
+    wpsoffice-cn
 
     # dev 
     nodejs_22
@@ -85,7 +85,9 @@
     ./zoxide.nix
     ./git.nix
 
-    ./starship 
+    ./polyglot
+
+    ./starship
     ./xmonad.nix
 
     ## neovim 
